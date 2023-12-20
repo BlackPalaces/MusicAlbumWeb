@@ -189,6 +189,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\download %282%29 1.png" />
     <Content Include="Content\Images\user.png" />
     <Content Include="Content\Images\Frame9.png" />
     <Content Include="Content\Images\List.png" />
