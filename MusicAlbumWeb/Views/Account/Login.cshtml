@@ -1,0 +1,91 @@
+﻿@using MusicAlbumWeb.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+<head>
+    <style>
+		.bgimages {
+			background-image: url('/Content/Images/Frame9.png');
+			background-size: cover;
+			background-position: center;
+		}
+
+		.text2title {
+			font-size: 30px;
+			color: aliceblue;
+		}
+
+		.box {
+			display: flex;
+			justify-content: center;
+			align-items: center; /* จัดให้ฟอร์มอยู่ตรงกลางทั้งแนวตั้ง */
+			margin-top: 150px;
+		}
+
+		.box2 {
+			text-align: center; /* ให้ฟอร์มอยู่ตรงกลางทั้งแนวนอน */
+		}
+
+		.form-control-textarea {
+			width: 250px; /* ปรับความกว้างตามต้องการ */
+		}
+    </style>
+</head>
+
+<body  class="box bgimages">
+		<div class="box2">
+			<Text class="text2title ">เข้าสู่ระบบ</Text>
+			<section id="loginForm">
+				@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+				{
+					@Html.AntiForgeryToken()
+					@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+					<div class="form-group">
+
+						<div class="col-md-10">
+							@Html.TextBoxFor(m => m.Email, new { @class = "form-control form-control-textarea", placeholder = "Email" })
+							@Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+						</div>
+					</div>
+					<div class="form-group">
+
+						<div class="col-md-10">
+							@Html.PasswordFor(m => m.Password, new { @class = "form-control form-control-textarea", placeholder = "Password" })
+							@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+						</div>
+					</div>
+					<div class="form-group">
+						<div class=" col-md-10">
+							<div class="checkbox" style="color:aliceblue; padding-right:40px;">
+								@Html.CheckBoxFor(m => m.RememberMe)
+								@Html.LabelFor(m => m.RememberMe)
+							</div>
+						</div>
+					</div>
+					<div style="display: flex; justify-content: space-between;">
+						<div class="form-group">
+							<div class="col-md-10">
+								<input type="submit" value="Log in" class="btn btn-default" />
+							</div>
+						</div>
+						<div style="align-self:center;">
+							<p >
+								@Html.ActionLink("ForgotPassword?", "ForgotPassword")
+							</p>
+						</div>
+					</div>
+
+					@* Enable this once you have account confirmation enabled for password reset functionality
+			<p>
+				@Html.ActionLink("Forgot your password?", "ForgotPassword")
+			</p>*@
+				}
+			</section>
+		</div>
+	
+</body>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

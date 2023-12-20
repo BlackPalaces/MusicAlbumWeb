@@ -1,0 +1,75 @@
+﻿body {
+	background-color: #22282A; /* เปลี่ยนสีนี้เป็นสีหัวเว็บที่คุณต้องการ */
+}
+
+.navbar-inversenew {
+	background-color: #0f2e30; /* เปลี่ยนสีนี้เป็นสีหัวเว็บที่คุณต้องการ */
+}
+
+.navbar-dark {
+	background-color: #1F292E;
+	border: none;
+}
+
+/* เพิ่มสไตล์นี้เพื่อปรับขนาดของ Logo หรือ Brand */
+.navbar-brand,
+.navbar-nav > li > a {
+	color: #ffffff;
+}
+
+
+.container {
+	display: flex;
+	height: 80vh;
+}
+
+aside {
+	padding-top: 50px;
+	width: 20%; /* กำหนดความกว้างของ Aside */
+	background-color: #f0f0f0; /* สีพื้นหลังของ Aside */
+	height: 100%;
+}
+
+.main-content {
+	flex: 1;
+	width: 80%;
+	padding: 20px;
+}
+/* เพิ่มสไตล์นี้เพื่อปรับขนาดของ Navbar */
+.navbar {
+	height: 80px; /* ปรับความสูงตามที่คุณต้องการ */
+	line-height: 80px; /* ปรับการจัดวางข้อความใน Navbar */
+}
+
+.icon {
+	width: 20px; /* ปรับขนาดไอคอนตามที่คุณต้องการ */
+	height: 20px;
+	margin-right: 5px; /* ปรับระยะห่างระหว่างไอคอนกับตัวหนังสือ */
+}
+
+.ul li {
+	display: flex; /* ทำให้ลิงก์และไอคอนอยู่ในบรรทัดเดียวกัน */
+	align-items: center; /* จัดให้ลิงก์และไอคอนตรงกันในแนวดิ่ง */
+}
+.boxtitle {
+	margin:15px;
+	width: 200px; /* ปรับขนาดของขอบสี่เหลี่ยมตามต้องการ */
+	height: 50px;
+	border: 2.5px solid #ffffff; /* ปรับสีและความหนาขอบสี่เหลี่ยมตามต้องการ */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.texttitle {
+	text-align: center;
+}
+
+	/* ปรับสีลิงก์ตามต้องการ */
+	.texttitle a {
+		color: #fff;
+		text-decoration: none;
+		font-size: 26px;
+		text-align: center;
+		font-family: 'Inter', sans-serif;
+	}

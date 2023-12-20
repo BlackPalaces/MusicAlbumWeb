@@ -1,0 +1,72 @@
+﻿@model MusicAlbumWeb.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<head>
+	<style>
+		.bgimages {
+			background-image: url('/Content/Images/Frame9.png');
+			background-size: cover;
+			background-position: center;
+		}
+		.text2title {
+			font-size: 30px;
+			color: aliceblue;
+		}
+		.box {
+			display: flex;
+			justify-content: center;
+			align-items: center; /* จัดให้ฟอร์มอยู่ตรงกลางทั้งแนวตั้ง */
+			margin-top:150px;
+		}
+		.box2 {
+			text-align: center; /* ให้ฟอร์มอยู่ตรงกลางทั้งแนวนอน */
+		}
+		.form-control-textarea {
+			width: 250px; /* ปรับความกว้างตามต้องการ */
+		}
+	</style>
+</head>
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+<body class="box bgimages">
+	<div class="box2">
+		<Text class="text2title ">สมัครสมาชิก</Text>
+		@Html.ValidationSummary("", new { @class = "text-danger" })
+		<div class="form-group">
+			<div class="col-md-10">
+				@Html.TextBoxFor(m => m.Email, new { @class = "form-control form-control-textarea", placeholder = "Email" })
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-md-10">
+				@Html.PasswordFor(m => m.Password, new { @class = "form-control form-control-textarea", placeholder = "Password" })
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-md-10">
+				@Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control form-control-textarea", placeholder = "ConfirmPassword" })
+			</div>
+		</div>
+	</div>
+	<div style="display: flex; justify-content: space-between;">
+		<div class="form-group">
+			<div class=" col-md-10">
+				<input type="submit" class="btn btn-default" value="สมัครสมาชิก" />
+			</div>
+		</div>
+		<div style="align-self:center;">
+			<p>
+				@Html.ActionLink("LOGIN?", "Login")
+			</p>
+		</div>
+		</div>
+</body>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

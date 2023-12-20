@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNet.Identity
+<head>
+    <style>
+		.user-image {
+			width: 60px; /* ปรับขนาดรูปภาพตามต้องการ */
+			height: 60px;
+			border-radius: 50%; /* ทำให้เป็นรูปวงกลม (หากต้องการ) */
+			margin-right: 5px; /* ระยะห่างข้างขวาของรูปภาพ */
+			margin-bottom:40px;
+		}
+		.navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
+			font-weight: bold;
+			background-color: lightgray;
+			color: #22282A;
+			border-bottom: 2px solid black;
+			height: 30px;
+			line-height: 5px;
+			border-radius: 5px;
+
+		}
+		.navbar-nav > li > a {
+			line-height: 0px;
+			padding-top: 13px;
+			padding-bottom: 15px;
+		}
+    </style>
+</head>
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+	<ul class="nav navbar-nav navbar-right" style="margin-bottom:10px;">
+		<li style="align-items: flex-end;">
+			@Html.ActionLink(User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+			<a href="javascript:document.getElementById('logoutForm').submit()" style="width: fit-content;">Log off</a>
+		</li>	
+		<li style="height:60px; margin-bottom:20px;">
+			<img src="~/Content/Images/user.png" class="user-image" />
+		</li>
+	</ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right" style="padding-top:10px;">
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title - My ASP.NET Application</title>
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/bundles/modernizr")
+	<link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+	<link href="~/Content/UIstyle.css" rel="stylesheet" />
+
+</head>
+<body>
+	<nav class="navbar navbar-dark navbar-fixed-top">
+		<div>
+			<div class="navbar-header" style="margin-right:60px">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div class="boxtitle">
+					<div class="texttitle">
+						@Html.ActionLink("Music Album", "HomePage", "Home", new { area = "" }, new { @class = "navbar-brand" })
+					</div>
+				</div>
+				</div>
+			<div class="navbar-collapse collapse" style="margin-right:60px; padding-top:15px;">
+				@Html.Partial("_LoginPartial")
+			</div>
+		</div>
+	</nav>
+	<div>
+		<div class="sidenav unselectable">
+			<h2 style="color:aliceblue">Browse</h2>
+			<a href="@Url.Action("HomePage", "Home")" class="text-with-shadow">
+				<img src="~/Content/Images/Home.png" alt="Home Icon" class="icon" />
+				Home
+			</a>
+			<a href="@Url.Action("Playlist", "Home")" class="text-with-shadow">
+				<img src="~/Content/Images/List.png" alt="About Icon" class="icon" />
+				Playlist
+			</a>
+			<a href="@Url.Action("Artist", "Home")" class="text-with-shadow">
+				<img src="~/Content/Images/Mic.png" alt="Contact Icon" class="icon" />
+				Artist
+			</a>
+			<a href="@Url.Action("Albams", "Home")" class="text-with-shadow">
+				<img src="~/Content/Images/Music.png" alt="UI Icon" class="icon" />
+				Albams
+			</a>
+		</div>
+		<div class="content2">
+			@RenderBody()
+		</div>
+	</div>
+
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/Content/bootstrap")
+	@RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,59 @@
+﻿* {
+	box-sizing: border-box;
+}
+
+/* Style the side navigation */
+.sidenav {
+	height: 100%;
+	width: 250px;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: #2E3538;
+	overflow-x: hidden;
+	padding-top: 100px;
+}
+
+.text-with-shadow {
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Side navigation links */
+.sidenav a {
+	color: white;
+	padding: 16px;
+	text-decoration: none;
+	display: block;
+}
+
+	/* Change color on hover */
+	.sidenav a:hover {
+		background-color: #22282A;
+	}
+	.sidenav a.active {
+		color: #8F8C8C; /* สีของลิงก์ที่ถูกคลิก */
+	}
+
+/* Style the content */
+.content2 {
+	padding-top: 10px;
+	margin-left: 250px;
+	padding-left: 20px;
+}
+
+.ul {
+	margin: 0;
+	padding: 0;
+	list-style: none; /* Remove default list styling */
+}
+
+h2 {
+	margin-left: 15px;
+	font-size:23px;
+}
+
+.unselectable {
+	user-select: none;
+}
