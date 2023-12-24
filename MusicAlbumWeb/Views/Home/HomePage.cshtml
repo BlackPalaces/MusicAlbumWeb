@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouTube Audio Player</title>
     <style>
+
         body {
             background-color: #282c34; /* Set your desired background color */
             color: #FFFFFF; /* Set your desired text color */
@@ -16,6 +17,42 @@
             margin: 0; /* Remove default margin */
             padding: 0; /* Remove default padding */
         }
+
+        #search-bar {
+            margin: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        #search-input {
+            padding: 10px;
+            width: 300px;
+            font-size: 1em;
+            color: #333; /* Text color in the input field */
+            border: 2px solid #007BFF; /* Border color */
+            border-radius: 5px; /* Rounded corners */
+            margin-right: 10px; /* Spacing between input and button */
+            outline: none; /* Remove default input focus outline */
+        }
+
+            #search-input:focus {
+                border-color: #0056b3; /* Border color on focus */
+            }
+
+        #search-button {
+            padding: 10px;
+            font-size: 1em;
+            color: #f2f2f2;
+            background-color: #666;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth transition on hover */
+        }
+
+            #search-button:hover {
+                background-color: #444;
+            }
 
         h2 {
             font-weight: bold;
@@ -27,13 +64,19 @@
         img {
             margin-right: 30px; /* Adjust the margin as needed */
         }
+
     </style>
 </head>
 <body>
+
     <br />
     <br />
     <br />
     <br />
+    <div id="search-bar">
+        <input type="text" id="search-input" placeholder="Search...">
+        <button id="search-button">Search</button>
+    </div>
     <h2>Top Charts Music</h2>
     <img src="~/image/1.jpg" width="200" height="200">
     <img src="~/image/2.jpg" width="200" height="200">
