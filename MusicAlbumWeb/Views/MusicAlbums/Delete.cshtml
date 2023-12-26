@@ -1,0 +1,72 @@
+﻿@model MusicAlbumWeb.MusicAlbum
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>MusicAlbum</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Musicname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Musicname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Artist)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Artist)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Musiclink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Musiclink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Album)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Album)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Musicpic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Musicpic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hit)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

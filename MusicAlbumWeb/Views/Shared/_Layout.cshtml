@@ -51,8 +51,16 @@
 				<img src="~/Content/Images/Music.png" alt="UI Icon" class="icon" />
 				Albams
 			</a>
+			<a href="@Url.Action("Manager", "MusicAlbums")" class="text-with-shadow">
+				<img src="~/Content/Images/Heart.png" alt="UI Icon" class="icon" />
+				My Favorite
+			</a>
+			<a href="@Url.Action("Manager", "MusicAlbums")" class="text-with-shadow">
+				<img src="~/Content/Images/Admin.png" alt="UI Icon" class="icon" />
+				AdminTools
+			</a>
 		</div>
-		<div class="content2">
+		<div class="content2" style="color:aliceblue;">
 			@RenderBody()
 		</div>
 	</div>
