@@ -20,11 +20,26 @@ namespace MusicAlbumWeb
             return View(db.MusicAlbum.ToList());
         }
 
-    
+
         public ActionResult Manager()
         {
-            return View();
+            // Check if the user has admin status
+            if (User.Identity.IsAuthenticated)
+            {
+                // Assuming you have a User model with a Status property
+                var user = db.AspNetUsers.FirstOrDefault(u => u.UserName == User.Identity.Name);
+
+                if (user != null && user.Status == "Admin")
+                {
+                    // User has admin status, allow access to Manager page
+                    return View();
+                }
+            }
+
+            // If the user is not authenticated or doesn't have admin status, redirect to login or handle accordingly
+            return RedirectToAction("Login", "Account"); // Adjust the redirect action as needed
         }
+
 
         public ActionResult MyFavorite()
         {

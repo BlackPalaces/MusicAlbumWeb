@@ -55,10 +55,26 @@
 				<img src="~/Content/Images/Heart.png" alt="UI Icon" class="icon" />
 				My Favorite
 			</a>
-			<a href="@Url.Action("Manager", "MusicAlbums")" class="text-with-shadow">
-				<img src="~/Content/Images/Admin.png" alt="UI Icon" class="icon" />
-				AdminTools
-			</a>
+			@if (Request.IsAuthenticated)
+			{
+				using (var db = new Entities())
+				{
+					var user = db.AspNetUsers.FirstOrDefault(u => u.UserName == User.Identity.Name);
+
+					if (user != null && user.Status == "Admin")
+					{
+						@Html.AntiForgeryToken()
+						<a href="@Url.Action("Manager", "MusicAlbums")" class="text-with-shadow">
+							<img src="~/Content/Images/Admin.png" alt="UI Icon" class="icon" />
+							AdminTools
+						</a>
+					}
+				}
+			}
+			else
+			{
+				// ตรวจสอบสถานะอื่น ๆ หรือทำอะไรก็ตามที่ต้องการเมื่อไม่ได้ล็อกอิน
+			}
 		</div>
 		<div class="content2" style="color:aliceblue;">
 			@RenderBody()
