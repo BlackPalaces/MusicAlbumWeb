@@ -218,8 +218,11 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\Admin.png" />
+    <Content Include="Content\Images\chart.png" />
     <Content Include="Content\Images\download %282%29 1.png" />
     <Content Include="Content\Images\Heart.png" />
+    <Content Include="Content\Images\naruto.jpg" />
+    <Content Include="Content\Images\plate.png" />
     <Content Include="Content\Images\user.png" />
     <Content Include="Content\Images\Frame9.png" />
     <Content Include="Content\Images\List.png" />
@@ -308,6 +311,7 @@
     <Content Include="Views\MusicAlbums\Edit.cshtml" />
     <Content Include="Views\MusicAlbums\Index.cshtml" />
     <Content Include="Views\MusicAlbums\Manager.cshtml" />
+    <Content Include="Views\MusicAlbums\MyFavorite.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

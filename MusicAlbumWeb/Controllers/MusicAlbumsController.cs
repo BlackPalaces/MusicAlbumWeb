@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 
 namespace MusicAlbumWeb
 {
@@ -21,6 +22,11 @@ namespace MusicAlbumWeb
 
     
         public ActionResult Manager()
+        {
+            return View();
+        }
+
+        public ActionResult MyFavorite()
         {
             return View();
         }
@@ -55,6 +61,14 @@ namespace MusicAlbumWeb
         {
             if (ModelState.IsValid)
             {
+                var file = Request.Files[0];
+                if (file != null && file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/images"), fileName);
+                    file.SaveAs(path);
+                    musicAlbum.Musicpic = fileName;
+                }
                 db.MusicAlbum.Add(musicAlbum);
                 db.SaveChanges();
                 return RedirectToAction("Index");

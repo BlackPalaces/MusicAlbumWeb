@@ -3,59 +3,71 @@
 @{
     ViewBag.Title = "Index";
 }
+<style>
+	table {
+		width: 100%;
+		text-align: center;
 
-<h2>Index</h2>
+	}
 
-<p>
-    @Html.ActionLink("Create New", "Create")
+	th, td {
+		padding: 10px;
+	}
+
+	img {
+		max-width: 100px;
+		height: auto;
+	}
+</style>
+
+<h2 style="padding-top:10px;">MusicManager</h2>
+
+<p style="padding-left:15px;">
+	@Html.ActionLink("เพิ่มเพลงใหม่", "Create", null, new { @class = "btn btn-success" } )
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Musicname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Artist)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Musiclink)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Album)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Musicpic)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Hit)
-        </th>
-        <th></th>
-    </tr>
+<table class="table table-bordered ">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Musicname)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Artist)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Album)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Musicpic)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Hit)
+		</th>
+		<th>
+			จัดการ
+		</th>
+	</tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        <td style="vertical-align: middle;">
             @Html.DisplayFor(modelItem => item.Musicname)
         </td>
-        <td>
+        <td style="vertical-align: middle;">
             @Html.DisplayFor(modelItem => item.Artist)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Musiclink)
-        </td>
-        <td>
+        <td style="vertical-align: middle;">
             @Html.DisplayFor(modelItem => item.Album)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Musicpic)
+        <td style="vertical-align: middle;">
+			<img src=@Url.Content("~/Content/images/"+(item.Musicpic)) style="width: 100px;height: auto" />
         </td>
-        <td>
+        <td style="vertical-align: middle;">
             @Html.DisplayFor(modelItem => item.Hit)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        <td style="vertical-align: middle;">
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id },new { @class = "btn btn-info" })
+            @Html.ActionLink("Details", "Details", new { id=item.Id }, new { @class = "btn btn-warning" }) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

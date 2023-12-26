@@ -2,6 +2,55 @@
 @{
     ViewBag.Title = "Manager";
 }
+<head>
+    <style>
+		.h2 {
+		padding-top:10px;
+		}
+		.img {
+			width:150px;
+			height:150px;
+		}
+		.card {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			border: 2px solid #454f54; /* สีขอบเป็นสีน้ำเงิน */
+			border-radius: 10px; /* ขอบมนเมตร */
+			padding: 20px; /* ระยะห่างขอบเนื้อหา */
+		}
+		.btn {
+			background-color: #454f54;
+			border:hidden;
+		}
 
-<h2>Manager</h2>
+    </style>
+</head>
 
+<h2 class="h2">Admin Tools</h2>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card" style="width: 18rem;">
+					<img class="card-img-top img" src="~/Content/Images/plate.png">
+					<div class="card-body">
+						<h5 class="card-title">MusicManager</h5>
+						<a href="@Url.Action("Index", "MusicAlbums")" class="btn btn-primary">จัดการเพลง</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card" style="width: 18rem;">
+					<img class="card-img-top img" src="~/Content/Images/chart.png">
+					<div class="card-body">
+						<h5 class="card-title">MusicChart</h5>
+						<a href="@Url.Action("MyFavorite", "MusicAlbums")" class="btn btn-primary">จัดการกราฟ</a>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+</body>
