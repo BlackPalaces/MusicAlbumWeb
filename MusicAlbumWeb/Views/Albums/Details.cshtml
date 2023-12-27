@@ -9,26 +9,34 @@
 <div>
     <h4>Album</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Albumname)
-        </dt>
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Albumname)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Albumname)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Albumname)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Songs)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Songs)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Songs)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Songs)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.AlbumPic)
+		</dt>
 
-    </dl>
+		<dd>
+			<img src=@Url.Content("~/Content/images/"+(Model.AlbumPic)) style="width: 100px;height: auto" />
+		</dd>
+
+	</dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+	@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+	@Html.ActionLink("Delete", "Delete", new { id = Model.Id }) |
+	@Html.ActionLink("Back to List", "Index")
 </p>
