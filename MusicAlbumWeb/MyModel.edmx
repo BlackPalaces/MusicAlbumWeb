@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Album">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Albumname" Type="nvarchar(max)" />
+          <Property Name="Songs" Type="varchar(max)" />
+          <Property Name="AlbumPic" Type="varchar" MaxLength="250" />
+        </EntityType>
         <EntityType Name="AspNetUsers">
           <Key>
             <PropertyRef Name="Id" />
@@ -32,10 +41,11 @@
           <Property Name="Artist" Type="varchar" MaxLength="250" />
           <Property Name="Musiclink" Type="varchar" MaxLength="250" />
           <Property Name="Album" Type="varchar" MaxLength="250" />
-          <Property Name="Musicpic" Type="varchar" MaxLength="50" />
+          <Property Name="Musicpic" Type="varchar" MaxLength="250" />
           <Property Name="Hit" Type="int" />
         </EntityType>
         <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Album" EntityType="Self.Album" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MusicAlbum" EntityType="Self.MusicAlbum" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -70,13 +80,23 @@
           <Property Name="Artist" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="Musiclink" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="Album" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Musicpic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Musicpic" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="Hit" Type="Int32" />
         </EntityType>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
           <EntitySet Name="MusicAlbum" EntityType="Self.MusicAlbum" />
+          <EntitySet Name="Album" EntityType="Model.Album" />
         </EntityContainer>
+        <EntityType Name="Album">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Albumname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Songs" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AlbumPic" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -112,6 +132,16 @@
                 <ScalarProperty Name="Album" ColumnName="Album" />
                 <ScalarProperty Name="Musicpic" ColumnName="Musicpic" />
                 <ScalarProperty Name="Hit" ColumnName="Hit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Album">
+            <EntityTypeMapping TypeName="Model.Album">
+              <MappingFragment StoreEntitySet="Album">
+                <ScalarProperty Name="AlbumPic" ColumnName="AlbumPic" />
+                <ScalarProperty Name="Songs" ColumnName="Songs" />
+                <ScalarProperty Name="Albumname" ColumnName="Albumname" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

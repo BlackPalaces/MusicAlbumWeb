@@ -27,5 +27,6 @@ namespace MusicAlbumWeb
     
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<MusicAlbum> MusicAlbum { get; set; }
+        public virtual DbSet<Album> Album { get; set; }
     }
 }

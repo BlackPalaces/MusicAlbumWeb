@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MusicAlbumWeb.Album>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>MusicAlbum</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="container">
+	@for (var i = 1; i <= Model.ToList().Count(); i++)
+	{
+		var indexItem = i - 1;
+		if (i == 1 || i % 4 == 1)
+		{
+			@:<div class="row">
+			}
+
+			<div class="col-md-3">
+				<div class="thumbnail">
+					<img class="img-responsive" style="max-width: 70%;"
+						 src=@Url.Content("~/Content/images/" + (Model.ElementAt(indexItem).AlbumPic)) />
+					<div class="caption">
+						<h3> @Model.ElementAt(indexItem).Albumname </h3>
+						@Html.ActionLink("Details", "Details", new { id = @Model.ElementAt(indexItem).Id }, new { @class = "btn btn-info" })
+						@Html.ActionLink("Edit", "Edit", new { id = @Model.ElementAt(indexItem).Id }, new { @class = "btn btn-warning" })
+						@Html.ActionLink("Delete", "Delete", new { id = @Model.ElementAt(indexItem).Id }, new { @class = "btn btn-danger" })
+					</div>
+				</div>
+			</div>
+
+			if (i % 4 == 0)
+			{
+			@:</div>
+		}
+	}
+</div>

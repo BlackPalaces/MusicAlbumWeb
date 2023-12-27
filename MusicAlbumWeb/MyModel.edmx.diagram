@@ -7,6 +7,7 @@
       <Diagram DiagramId="ea80a45fe1b6472d97e5751c2bd4c022" Name="Diagram1">
         <EntityTypeShape EntityType="Model.AspNetUsers" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.MusicAlbum" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Album" Width="1.5" PointX="3.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
