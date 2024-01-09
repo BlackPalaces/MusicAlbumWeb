@@ -9,56 +9,64 @@
 <div>
     <h4>MusicAlbum</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Musicname)
-        </dt>
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Musicname)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Musicname)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Musicname)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Artist)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Artist)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Artist)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Artist)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Musiclink)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Musiclink)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Musiclink)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Musiclink)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Album)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Album)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Album)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Album)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Musicpic)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Type)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Musicpic)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Type)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Hit)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Musicpic)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Hit)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Musicpic)
+		</dd>
 
-    </dl>
+		<dt>
+			@Html.DisplayNameFor(model => model.Hit)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Hit)
+		</dd>
+
+	</dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

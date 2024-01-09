@@ -21,5 +21,6 @@ namespace MusicAlbumWeb
         public string Album { get; set; }
         public string Musicpic { get; set; }
         public Nullable<int> Hit { get; set; }
+        public string Type { get; set; }
     }
 }
