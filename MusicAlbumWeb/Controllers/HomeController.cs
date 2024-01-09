@@ -8,9 +8,14 @@ namespace MusicAlbumWeb.Controllers
 {
     public class HomeController : Controller
     {
+        private Entities db = new Entities();
         public ActionResult HomePage()
         {
-            return View();
+            var musicList = db.MusicAlbum.ToList();
+
+            // เรียงลำดับตามค่า Hit จากมากไปน้อย
+            var sortedMusicList = musicList.OrderByDescending(m => m.Hit).ToList();
+            return View(db.MusicAlbum.ToList());
         }
         public ActionResult Albams()
         {
