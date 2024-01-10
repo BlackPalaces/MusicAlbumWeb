@@ -9,6 +9,7 @@ ViewBag.Title = "HomePage";
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>YouTube Audio Player</title>
+	<link href="~/Content/CardStyles.css" rel="stylesheet" />
 	<style>
 		
 
@@ -73,6 +74,15 @@ ViewBag.Title = "HomePage";
 		h2.b {
 			text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87
 		}
+		.shadow1 {
+			text-shadow: 0 0 0.2em #3f4f78, 0 0 0.2em #3f4f78
+		}
+		h2.c {
+			text-shadow: 0 0 0.2em #ae9e29, 0 0 0.2em #ae9e29;
+		}
+		.margin-top {
+			margin-top:20px;
+		}
 	</style>
 </head>
 <body>
@@ -81,62 +91,126 @@ ViewBag.Title = "HomePage";
 		<input type="text" id="search-input" placeholder="Search...">
 		<button id="search-button">Search</button>
 	</div>
-	<div>
-		<h2 class="b">Top6 Charts Music</h2>
-		<div class="container">
-			@{
-				var sortedModel = Model.OrderByDescending(m => m.Hit).ToList();
-			}
-			@for (var i = 1; i <= Math.Min(6, sortedModel.Count()); i++)
-			{
-				var indexItem = i - 1;
-				if (i == 1 || i % 4 == 1)
-				{
-					@:<div class="row">
-					}
-
-					<div class="col-md-2" style="padding-left:25px;">
-						<div class="thumbnail">
-							<img class="img-responsive" style="max-width: 120%; height: 200px; object-fit: cover; object-position: center;"
-								 src=@Url.Content("~/Content/images/" + (sortedModel.ElementAt(indexItem).Musicpic)) />
-						</div>
+	<h2 class="b">Music Genres</h2>
+	<div class="row">
+		<div class="col-sm-12 col-md-6 col-lg-4 mb-4 margin-top">
+			<div class="card text-dark card-has-bg click-col" style="background-image: url('https://media.istockphoto.com/id/1367739711/vector/sound-wave-heart-shape-music-equalizer-abstract-vector-illustration.jpg?s=612x612&w=0&k=20&c=S6xb1YMAk69fp-8A7hzYFa_ZJi9asnB3St6ucr6Gb-s=');">
+				<div class="card-img-overlay d-flex flex-column">
+					<div class="card-body">
+						<span class="card-meta mb-2 shadow1">FALL IN LOVE</span>
 					</div>
-
-					if (i % 6 == 0 || i == Math.Min(6, sortedModel.Count()))
-					{
-					@:</div>
-				}
-			}
+				</div>
+			</div>
+		</div>
+		<!--2-->
+		<div class="col-sm-12 col-md-6 col-lg-4 mb-4 margin-top">
+			<div class="card text-dark card-has-bg click-col" style="background-image: url('https://www.sciencefriday.com/wp-content/uploads/2022/12/jazz-trumpet.jpg');">
+				<div class="card-img-overlay d-flex flex-column">
+					<div class="card-body">
+						<span class="card-meta mb-2 shadow1">Jazz</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--3-->
+		<div class="col-sm-12 col-md-6 col-lg-4 mb-4 margin-top">
+			<div class="card text-dark card-has-bg click-col" style="background-image: url('https://pyxis.nymag.com/v1/imgs/3a3/b1f/2141226b8ab1ae07afe4b541ee0d2b0825-11-yic-pop-essay.2x.h473.w710.jpg');">
+				<div class="card-img-overlay d-flex flex-column">
+					<div class="card-body">
+						<span class="card-meta mb-2 shadow1">POP</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--4-->
+		<div class="col-sm-12 col-md-6 col-lg-4 mb-4 margin-top">
+			<div class="card text-dark card-has-bg click-col" style="background-image: url('https://ns-static.s3.us-east-va.perf.cloud.ovh.us/img/categories/styles/classical-music_1600x900.jpg');">
+				<div class="card-img-overlay d-flex flex-column">
+					<div class="card-body">
+						<span class="card-meta mb-2 shadow1">Classic</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-6 col-lg-4 mb-4 margin-top">
+			<div class="card text-dark card-has-bg click-col" style="background-image: url('https://www.rollingstone.com/wp-content/uploads/2022/05/210603_200rapalbums_FINAL.jpg?w=1581&h=1054&crop=1');">
+				<div class="card-img-overlay d-flex flex-column">
+					<div class="card-body">
+						<span class="card-meta mb-2 shadow1">RAP</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-6 col-lg-4 mb-4 margin-top">
+			<div class="card text-dark card-has-bg click-col" style="background-image: url('https://img.freepik.com/premium-photo/illustration-rock-guitarist-digital-art-ai_800563-5930.jpg');">
+				<div class="card-img-overlay d-flex flex-column">
+					<div class="card-body">
+						<span class="card-meta mb-2 shadow1">Rock</span>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-	<div>
-		<h2 class="a">All2</h2>
-		<div class="container">
-			@for (var i = 1; i <= Model.ToList().Count(); i++)
-			{
-				var indexItem = i - 1;
-				if (i == 1 || i % 4 == 1)
-				{
-					@:<div class="row" >
-					}
 
-					<div class="col-md-2" style="padding-left:25px;">
-						<div class="thumbnail">
-							<img class="img-responsive" style="max-width: 120%; height: 200px; object-fit: cover; object-position: center;"
-								 src=@Url.Content("~/Content/images/" + (Model.ElementAt(indexItem).Musicpic)) />
-						</div>
-					</div>
 
-					if (i % 6 == 0)
-					{
-					@:</div>
+
+		<div>
+			<h2 class="a">Top6 Charts Music</h2>
+			<div class="container">
+				@{
+					var sortedModel = Model.OrderByDescending(m => m.Hit).ToList();
 				}
-			}
+				@for (var i = 1; i <= Math.Min(6, sortedModel.Count()); i++)
+				{
+					var indexItem = i - 1;
+					if (i == 1 || i % 4 == 1)
+					{
+						@:<div class="row">
+						}
+
+						<div class="col-md-2" style="padding-left:25px;">
+							<div class="thumbnail">
+								<img class="img-responsive" style="max-width: 120%; height: 200px; object-fit: cover; object-position: center;"
+									 src=@Url.Content("~/Content/images/" + (sortedModel.ElementAt(indexItem).Musicpic)) />
+							</div>
+							<div>
+								<span>@(sortedModel.ElementAt(indexItem).Musicname)</span>
+							</div>
+						</div>
+
+						if (i % 6 == 0 || i == Math.Min(6, sortedModel.Count()))
+						{
+						@:</div>
+					}
+				}
+			</div>
 		</div>
-	</div>
-	<h2>Music Genres</h2>
-	<!-- Add your content for Music Genres here -->
-	<br />
+		<div>
+			<h2 class="">All</h2>
+			<div class="container">
+				@for (var i = 1; i <= Model.ToList().Count(); i++)
+				{
+					var indexItem = i - 1;
+					if (i == 1 || i % 4 == 1)
+					{
+						@:<div class="row">
+						}
+
+						<div class="col-md-2" style="padding-left:25px;">
+							<div class="thumbnail">
+								<img class="img-responsive" style="max-width: 120%; height: 200px; object-fit: cover; object-position: center;"
+									 src=@Url.Content("~/Content/images/" + (Model.ElementAt(indexItem).Musicpic)) />
+							</div>
+						</div>
+
+						if (i % 6 == 0)
+						{
+						@:</div>
+					}
+				}
+			</div>
+		</div>
+		<br />
 </body>
 </html>
 
