@@ -144,3 +144,8 @@ h1 {
 	/* Add styles for max-width: 767px here if needed */
 }
 
+@media (min-width: 992px) {
+	.col-md-4 {
+		width: auto;
+	}
+}

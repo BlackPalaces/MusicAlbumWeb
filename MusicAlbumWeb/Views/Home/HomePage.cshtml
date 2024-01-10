@@ -67,6 +67,7 @@ ViewBag.Title = "HomePage";
 		}
 		.container {
 		height:fit-content;
+		margin-left:0px;
 		}
 		h2.a {
 			text-shadow: 0 0 0.2em #87F, 0 0 0.2em #87F, 0 0 0.2em #87F;
@@ -82,6 +83,21 @@ ViewBag.Title = "HomePage";
 		}
 		.margin-top {
 			margin-top:20px;
+		}
+
+		.card2 {
+			box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+		}
+
+		.width-90 {
+			width: 90px !important;
+		}
+
+		.rounded-3 {
+			border-radius: 0.5rem !important;
+		}
+		.decnone {
+			text-decoration: none;
 		}
 	</style>
 </head>
@@ -154,63 +170,70 @@ ViewBag.Title = "HomePage";
 
 
 
-		<div>
-			<h2 class="a">Top6 Charts Music</h2>
-			<div class="container">
-				@{
-					var sortedModel = Model.OrderByDescending(m => m.Hit).ToList();
-				}
-				@for (var i = 1; i <= Math.Min(6, sortedModel.Count()); i++)
+	<div>
+		<h2 class="a">Top6 Charts Music</h2>
+		<div class="container">
+			@{
+				var sortedModel = Model.OrderByDescending(m => m.Hit).ToList();
+			}
+			@for (var i = 1; i <= Math.Min(6, sortedModel.Count()); i++)
+			{
+				var indexItem = i - 1;
+				if (i == 1 || i % 4 == 1)
 				{
-					var indexItem = i - 1;
-					if (i == 1 || i % 4 == 1)
-					{
-						@:<div class="row">
-						}
-
-						<div class="col-md-2" style="padding-left:25px;">
-							<div class="thumbnail">
-								<img class="img-responsive" style="max-width: 120%; height: 200px; object-fit: cover; object-position: center;"
-									 src=@Url.Content("~/Content/images/" + (sortedModel.ElementAt(indexItem).Musicpic)) />
-							</div>
-							<div>
-								<span style="align-items:center;">@(sortedModel.ElementAt(indexItem).Musicname)</span>
-							</div>
-						</div>
-
-						if (i % 6 == 0 || i == Math.Min(6, sortedModel.Count()))
-						{
-						@:</div>
+					@:<div class="row">
 					}
-				}
-			</div>
-		</div>
-		<div>
-			<h2 class="">All</h2>
-			<div class="container">
-				@for (var i = 1; i <= Model.ToList().Count(); i++)
-				{
-					var indexItem = i - 1;
-					if (i == 1 || i % 4 == 1)
-					{
-						@:<div class="row">
-						}
 
-						<div class="col-md-2" style="padding-left:25px;">
-							<div class="thumbnail">
-								<img class="img-responsive" style="max-width: 120%; height: 200px; object-fit: cover; object-position: center;"
-									 src=@Url.Content("~/Content/images/" + (Model.ElementAt(indexItem).Musicpic)) />
-							</div>
+					<div class="col-md-2" style="padding-left:25px;">
+						<div class="thumbnail">
+							<img class="img-responsive" style="max-width: 120%; height: 200px; object-fit: cover; object-position: center;"
+								 src=@Url.Content("~/Content/images/" + (sortedModel.ElementAt(indexItem).Musicpic)) />
 						</div>
+						<div>
+							<span style="align-items:center;">@(sortedModel.ElementAt(indexItem).Musicname)</span>
+						</div>
+					</div>
 
-						if (i % 6 == 0)
-						{
-						@:</div>
-					}
+					if (i % 6 == 0 || i == Math.Min(6, sortedModel.Count()))
+					{
+					@:</div>
 				}
-			</div>
+			}
 		</div>
-		<br />
+	</div>
+	<h2 class="">All</h2>
+	<div class="container">
+		<div class="row">
+			@for (var i = 0; i < Model.Count(); i++)
+			{
+				var musicItem = Model.ElementAt(i);
+
+				<div class="col-md-12">
+					<div class="card mb-3 card-body " style="min-height: 100px; background-image: url('@Url.Content("~/Content/images/" + musicItem.Musicpic)'); background-size: 70%; background-position:top; padding-top:20px;">
+						<a href="https://www.youtube.com/" target="_blank" style="text-decoration: none; color: inherit;">
+							<div class="row align-items-center">
+								<div class="col-md-4">
+									<img class="width-90 rounded-3" style="height: 100px; min-width: 150px; object-fit: cover; object-position: center;"
+										 src=@Url.Content("~/Content/images/" + musicItem.Musicpic) />
+								</div>
+								<div class="col-md-8">
+									<div class="overflow-hidden flex-nowrap">
+										<h3 class="mb-1">
+											<span class="text-reset">@musicItem.Musicname</span>
+										</h3>
+										<span class="text-muted d-block mb-2 small" style="font-size:20px;">
+											@musicItem.Artist
+										</span>
+									</div>
+								</div>
+							</div>
+							</a>
+</div>
+				</div>
+			}
+		</div>
+	</div>
+	<br />
 </body>
 </html>
 
