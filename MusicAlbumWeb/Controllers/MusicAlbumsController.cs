@@ -20,6 +20,18 @@ namespace MusicAlbumWeb
             return View(db.MusicAlbum.ToList());
         }
 
+        public ActionResult Chart()
+        {
+            return View();
+        }
+        public JsonResult GetDataJson()
+        {
+            var db = new Entities();
+            var data = db.MusicAlbum.ToList();
+
+            return Json(new { JSONList = data }, JsonRequestBehavior.AllowGet);
+        }
+
 
         public ActionResult Manager()
         {
