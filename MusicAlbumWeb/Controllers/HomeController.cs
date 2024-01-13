@@ -19,7 +19,9 @@ namespace MusicAlbumWeb.Controllers
         }
         public ActionResult Albams()
         {
-            return View();
+            var AlbumList = db.Album.ToList();
+            
+            return View(AlbumList);
         }
         public ActionResult Index()
         {

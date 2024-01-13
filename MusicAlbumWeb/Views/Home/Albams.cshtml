@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<MusicAlbumWeb.MusicAlbum>
+@model IEnumerable<MusicAlbumWeb.Album>
 
 ViewBag.Title = "Albams";
 }
@@ -77,7 +77,7 @@ ViewBag.Title = "Albams";
         }
 
         h2.b {
-            text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87
+            text-shadow: 0 0 0.2em #83dc4e, 0 0 0.2em #F87
         }
 
         .shadow1 {
@@ -125,76 +125,38 @@ ViewBag.Title = "Albams";
 
     <h2 class="b">Music Albums</h2>
     <div class="row">
-        <!-- Music Album 1 -->
-        <div class="col-sm-12 col-md-6 col-lg-4 mb-4 margin-top">
-            <div class="card text-dark card-has-bg click-col" style="background-image: url('https://i.pinimg.com/564x/d2/2b/97/d22b97e32ea10b8506a78fa7b25eaf46.jpg'); ">
-                <div class="card-img-overlay d-flex flex-column">
-                    <div class="card-body">
-                        <span class="card-meta mb-2 shadow1">Death Metal</span>
+        @for (var i = 0; i < Model.Count(); i++)
+        {
+            var musicItem = Model.ElementAt(i);
+
+            <div class="col-sm-12 col-md-6 mb-4 margin-top">
+                <div class="card text-dark card-has-bg click-col " style="min-height: 100px; background-image: url('@Url.Content("~/Content/images/" + musicItem.AlbumPic)'); background-size: 100%; background-position:center; padding-top:150px;">
+                    <div class="card-img-overlay d-flex flex-column">
+                        <a href="https://www.youtube.com/" target="_blank" style="text-decoration: none; color: inherit;">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <img class="width-90 rounded-3" style="height: 150px; min-width: 150px; object-fit: cover; object-position: center;"
+                                         src=@Url.Content("~/Content/images/" + musicItem.AlbumPic) />
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="overflow-hidden flex-nowrap">
+                                        <h3 class="mb-1">
+                                            <span class="card-meta mb-2 shadow1">@musicItem.Albumname</span>
+                                        </h3>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Music Album 2 -->
-        <div class="col-sm-12 col-md-6 col-lg-4 mb-4 margin-top">
-            <div class="card text-dark card-has-bg click-col" style="background-image: url('https://i.pinimg.com/564x/d7/2d/09/d72d0970d3b86021f3abaaf78c1d8816.jpg');">
-                <div class="card-img-overlay d-flex flex-column">
-                    <div class="card-body">
-                        <span class="card-meta mb-2 shadow1">Anime</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Music Album 3 -->
-        <div class="col-sm-12 col-md-6 col-lg-4 mb-4 margin-top">
-            <div class="card text-dark card-has-bg click-col" style="background-image: url('https://i.pinimg.com/736x/ae/8c/bd/ae8cbd1ba42104f82c00c965d3b1c3a4.jpg'); ">
-                <div class="card-img-overlay d-flex flex-column">
-                    <div class="card-body">
-                        <span class="card-meta mb-2 shadow1">Hip-Hop</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Music Album 4 -->
-        <div class="col-sm-12 col-md-6 col-lg-4 mb-4 margin-top">
-            <div class="card text-dark card-has-bg click-col" style="background-image: url('https://i.pinimg.com/564x/21/21/83/21218355f168dcfb5ffd2789e9a41556.jpg'); ">
-                <div class="card-img-overlay d-flex flex-column">
-                    <div class="card-body">
-                        <span class="card-meta mb-2 shadow1">Lofi-Pop</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Music Album 5 -->
-        <div class="col-sm-12 col-md-6 col-lg-4 mb-4 margin-top">
-            <div class="card text-dark card-has-bg click-col" style="background-image: url('https://i.pinimg.com/736x/4c/17/87/4c17871b289df49728ed7614b6f8368c.jpg'); ">
-                <div class="card-img-overlay d-flex flex-column">
-                    <div class="card-body">
-                        <span class="card-meta mb-2 shadow1">Travel</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Music Album 6 -->
-        <div class="col-sm-12 col-md-6 col-lg-4 mb-4 margin-top">
-            <div class="card text-dark card-has-bg click-col" style="background-image: url('https://i.pinimg.com/564x/58/ea/42/58ea42175dfa968c8041ad160f459fc7.jpg'); ">
-                <div class="card-img-overlay d-flex flex-column">
-                    <div class="card-body">
-                        <span class="card-meta mb-2 shadow1">Smooth Jazz</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-
 
             
-    </body>
-</html>
+        }
+    </div>
+            
+        </div>
+    </div>
+    
+</body>
