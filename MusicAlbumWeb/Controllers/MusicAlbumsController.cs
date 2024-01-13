@@ -20,6 +20,18 @@ namespace MusicAlbumWeb
             return View(db.MusicAlbum.ToList());
         }
 
+        public ActionResult Chart()
+        {
+            return View();
+        }
+        public JsonResult GetDataJson()
+        {
+            var db = new Entities();
+            var data = db.MusicAlbum.ToList();
+
+            return Json(new { JSONList = data }, JsonRequestBehavior.AllowGet);
+        }
+
 
         public ActionResult Manager()
         {
@@ -116,6 +128,20 @@ namespace MusicAlbumWeb
         {
             if (ModelState.IsValid)
             {
+                // Check if a file is uploaded
+                if (Request.Files.Count > 0)
+                {
+                    var file = Request.Files[0];
+
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath("~/Content/images"), fileName);
+                        file.SaveAs(path);
+                        musicAlbum.Musicpic = fileName;
+                    }
+                }
+
                 db.Entry(musicAlbum).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

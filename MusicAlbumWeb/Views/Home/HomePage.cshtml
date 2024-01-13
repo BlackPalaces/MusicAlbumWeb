@@ -184,13 +184,13 @@ ViewBag.Title = "HomePage";
 					@:<div class="row">
 					}
 
-					<div class="col-md-2" style="padding-left:25px;">
+					<div class="col-md-2 card-has-bg" style="padding-left:25px;">
 						<div class="thumbnail">
 							<img class="img-responsive" style="max-width: 120%; height: 200px; object-fit: cover; object-position: center;"
 								 src=@Url.Content("~/Content/images/" + (sortedModel.ElementAt(indexItem).Musicpic)) />
 						</div>
 						<div>
-							<span style="align-items:center;">@(sortedModel.ElementAt(indexItem).Musicname)</span>
+							<span class="text-with-shadow" style="align-items:center;">@(sortedModel.ElementAt(indexItem).Musicname)</span>
 						</div>
 					</div>
 
@@ -208,31 +208,33 @@ ViewBag.Title = "HomePage";
 			{
 				var musicItem = Model.ElementAt(i);
 
-				<div class="col-md-12">
-					<div class="card mb-3 card-body " style="min-height: 100px; background-image: url('@Url.Content("~/Content/images/" + musicItem.Musicpic)'); background-size: 70%; background-position:top; padding-top:20px;">
-						<a href="https://www.youtube.com/" target="_blank" style="text-decoration: none; color: inherit;">
-							<div class="row align-items-center">
-								<div class="col-md-4">
-									<img class="width-90 rounded-3" style="height: 100px; min-width: 150px; object-fit: cover; object-position: center;"
-										 src=@Url.Content("~/Content/images/" + musicItem.Musicpic) />
-								</div>
-								<div class="col-md-8">
-									<div class="overflow-hidden flex-nowrap">
-										<h3 class="mb-1">
-											<span class="text-reset">@musicItem.Musicname</span>
-										</h3>
-										<span class="text-muted d-block mb-2 small" style="font-size:20px;">
-											@musicItem.Artist
-										</span>
+				<div class="col-md-4 mb-3 card-has-bg">
+					<div class="card mb-3 " style="margin-top:10px; min-height: 100px; background-image: url('@Url.Content("~/Content/images/" + musicItem.Musicpic)'); background-size: 70%; background-position: top; padding-top: 10px; width: 540px;">
+						<div class="card-img-overlay">
+							<a href="@musicItem.Musiclink" target="_blank" style="text-decoration: none; color: inherit;">
+								<div class="row align-items-center">
+									<div class="col-md-4">
+										<img class="width-90 rounded-3" style="height: 100px; min-width: 150px; object-fit: cover; object-position: center;" src=@Url.Content("~/Content/images/" + musicItem.Musicpic) />
+									</div>
+									<div class="col-md-8" style="width:fit-content;">
+										<div class="overflow-hidden flex-nowrap" style="width:300px;">
+											<h3 class="mb-1">
+												<span class="text-reset text-with-shadow" style="color: aliceblue; font-size: 18px; white-space: nowrap; text-overflow: ellipsis;">@musicItem.Musicname</span>
+											</h3>
+											<span class="text-muted d-block mb-2 small" style="font-size: 15px; color: #b4d3db;">
+												@musicItem.Artist
+											</span>
+										</div>
 									</div>
 								</div>
-							</div>
 							</a>
+						</div>
 					</div>
 				</div>
 			}
 		</div>
 	</div>
+
 	<br />
 </body>
 </html>

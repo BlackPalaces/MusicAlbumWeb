@@ -1,0 +1,182 @@
+﻿
+@{
+    ViewBag.Title = "Chart";
+}
+
+<html>
+<head>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		google.charts.load("current", { 'packages': ["corechart"] });
+		google.charts.setOnLoadCallback(drawChart);
+
+		function drawChart() {
+			$.ajax({
+				type: 'GET',
+				url: '/MusicAlbums/GetDataJSON',
+				success: function (chartsdata) {
+					var rawData = chartsdata.JSONList;
+					var data = new google.visualization.DataTable();
+					data.addColumn('string', 'Type');
+					data.addColumn('number', 'Hit');
+
+					// นำข้อมูลมาเก็บใน Dictionary เพื่อรวมยอด Hit ของ Type ที่เหมือนกัน
+					var typeToHitMap = {};
+					for (var i = 0; i < rawData.length; i++) {
+						var currentType = rawData[i].Type;
+						var currentHit = rawData[i].Hit;
+
+						if (typeToHitMap[currentType] === undefined) {
+							typeToHitMap[currentType] = 0;
+						}
+
+						typeToHitMap[currentType] += currentHit;
+					}
+
+					// เพิ่มข้อมูลลงใน DataTable จาก Dictionary ที่ได้
+					for (var type in typeToHitMap) {
+						data.addRow([type, typeToHitMap[type]]);
+					}
+
+					var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+					chart.draw(data, {
+						title: "ผู้คนนิยมฟังเพลงกลุ่มนี้",
+						titleTextStyle: { color: 'white' },
+						position: "top",
+						fontsize: "14px",
+						backgroundColor: '#454f54',
+						legend: { textStyle: { color: 'white' } }
+					});
+				},
+				error: function () {
+					alert("Error");
+				}
+			});
+		}
+	</script>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		google.charts.load("current", { 'packages': ["corechart"] });
+		google.charts.setOnLoadCallback(drawChart);
+		function drawChart() {
+			$.ajax({
+				type: 'GET',
+				url: '/MusicAlbums/GetDataJSON',
+				success: function (chartsdata) {
+					var Data = chartsdata.JSONList;
+					var data = new google.visualization.DataTable();
+					data.addColumn('string', 'Music');
+					data.addColumn('number', 'Hit');
+					// เรียงลำดับข้อมูลตามคอลัมน์ 'Hit' จากมากไปน้อย
+					Data.sort(function (a, b) {
+						return b.Hit - a.Hit;
+					});
+					for (var i = 0; i < Data.length; i++) {
+						data.addRow([Data[i].Musicname, Data[i].Hit]);
+					}
+
+					var options = {
+						title: "ผู้คนนิยมฟังเพลงนี้", titleTextStyle: { color: 'white' },
+						position: "top",
+						fontsize: "14px",
+						hAxis: { title: 'Hit', titleTextStyle: { color: 'white' }, textStyle: { color: 'white' } },
+						vAxis: { title: 'Music', titleTextStyle: { color: 'white' }, textStyle: { color: 'white' } },
+						backgroundColor: '#454f54',
+						colors: ['#85bad6'],
+						legend: { textStyle: { color: 'white' } }
+					};
+
+					var chart = new google.visualization.BarChart(document.getElementById('barchart'));
+					chart.draw(data, options);
+				},
+				error: function () {
+					alert("Error");
+				}
+			});
+		}
+	</script>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		google.charts.load("current", { 'packages': ["corechart"] });
+		google.charts.setOnLoadCallback(drawChart);
+
+		function drawChart() {
+			$.ajax({
+				type: 'GET',
+				url: '/MusicAlbums/GetDataJSON',
+				success: function (chartsdata) {
+					var rawData = chartsdata.JSONList;
+
+					// สร้าง Dictionary เพื่อเก็บจำนวนของแต่ละ Type
+					var typeCountMap = {};
+
+					for (var i = 0; i < rawData.length; i++) {
+						var currentType = rawData[i].Type;
+
+						if (typeCountMap[currentType] === undefined) {
+							typeCountMap[currentType] = 0;
+						}
+
+						typeCountMap[currentType]++;
+					}
+
+					// เตรียมข้อมูลสำหรับ DataTable
+					var data = new google.visualization.DataTable();
+					data.addColumn('string', 'Type');
+					data.addColumn('number', 'Count');
+
+					// เพิ่มข้อมูลลงใน DataTable จาก Dictionary
+					for (var type in typeCountMap) {
+						data.addRow([type, typeCountMap[type]]);
+					}
+
+					var totalSongs = calculateTotalSongs(typeCountMap);
+
+					var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+					chart.draw(data, {
+						title: "เพลงที่มีทั้งหมด " + totalSongs + " เพลง",
+						titleTextStyle: { color: 'white' },
+						position: "top",
+						fontsize: "14px",
+						backgroundColor: '#454f54',
+						legend: { textStyle: { color: 'white' } },
+						pieHole: 0.4,
+						tooltip: { // ใส่ tooltip เพื่อแสดงข้อมูลเพิ่มเติม
+							text: 'papercentage', // เปลี่ยนจาก 'percentage' เป็น 'value'
+						},
+						pieSliceText: 'value',
+					});
+				},
+				error: function () {
+					alert("Error");
+				}
+			});
+		}
+		function calculateTotalSongs(typeCountMap) {
+			var totalSongs = 0;
+			for (var type in typeCountMap) {
+				totalSongs += typeCountMap[type];
+			}
+			return totalSongs;
+		}
+
+	</script>
+
+</head>
+<body style="margin-top:20px;">
+	<div style="padding: 10px; display: flex; justify-content: space-between;">
+		<div id="donutchart" style="width: 48%; height: 400px;"></div>
+		<div id="piechart_3d" style="width: 48%; height: 400px;"></div>
+	</div>
+
+	<div style=" padding: 10px;">
+		<div id="barchart" style="width: 100%; height: 350px;"></div>
+	</div>
+</body>
+
+</html>
