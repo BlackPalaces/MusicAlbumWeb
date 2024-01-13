@@ -1,6 +1,117 @@
-﻿@{
-    ViewBag.Title = "Artist";
+﻿
+@model IEnumerable<MusicAlbumWeb.MusicAlbum>
+
+ViewBag.Title = "Artist";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Audio Player</title>
+    <link href="~/Content/CardStyles.css" rel="stylesheet" />
+    <style>
+
+
+        #search-bar {
+            margin: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        #search-input {
+            padding: 10px;
+            width: 300px;
+            font-size: 1em;
+            color: #333; /* Text color in the input field */
+            background-color: #f2f2f2; /* Light gray background */
+            border: 2px solid #666; /* Dark gray border */
+            border-radius: 5px; /* Rounded corners */
+            margin-right: 10px; /* Spacing between input and button */
+            outline: none; /* Remove default input focus outline */
+        }
+
+            #search-input:focus {
+                border-color: #999; /* Darker border color on focus */
+            }
+
+        #search-button {
+            padding: 10px;
+            font-size: 1em;
+            color: #FFFFFF;
+            background-color: #666; /* Dark gray background */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth transition on hover */
+        }
+
+            #search-button:hover {
+                background-color: #444; /* Darker gray on hover */
+            }
+
+        h2 {
+            font-weight: bold;
+            font-size: 2em;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        img {
+            margin-right: 30px;
+        }
+
+        .thumbnail {
+            background-color: transparent;
+            width: fit-content;
+            border: none;
+        }
+
+        .container {
+            height: fit-content;
+            margin-left: 0px;
+        }
+
+        h2.a {
+            text-shadow: 0 0 0.2em #87F, 0 0 0.2em #87F, 0 0 0.2em #87F;
+        }
+
+        h2.b {
+            text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87
+        }
+
+        .shadow1 {
+            text-shadow: 0 0 0.2em #3f4f78, 0 0 0.2em #3f4f78
+        }
+
+        h2.c {
+            text-shadow: 0 0 0.2em #ae9e29, 0 0 0.2em #ae9e29;
+        }
+
+        .margin-top {
+            margin-top: 20px;
+        }
+
+        .card2 {
+            box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+        }
+
+        .width-90 {
+            width: 90px !important;
+        }
+
+        .rounded-3 {
+            border-radius: 0.5rem !important;
+        }
+
+        .decnone {
+            text-decoration: none;
+        }
+
+        .container {
+            height: 300px; /* Set the desired height */
+            overflow-y: auto; /* Enable vertical scrollbar when content exceeds the height */
+            margin-top: 20px; /* Adjust as needed */
+        }
+    </style>
 
