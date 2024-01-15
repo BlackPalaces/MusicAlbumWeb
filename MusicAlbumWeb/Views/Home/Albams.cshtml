@@ -130,12 +130,12 @@ ViewBag.Title = "Albams";
             var musicItem = Model.ElementAt(i);
 
             <div class="col-sm-12 col-md-6 mb-4 margin-top">
-                <div class="card text-dark card-has-bg click-col " style="min-height: 100px; background-image: url('@Url.Content("~/Content/images/" + musicItem.AlbumPic)'); background-size: 100%; background-position:center; padding-top:150px;">
-                    <div class="card-img-overlay d-flex flex-column">
+                
+                    <div class=" d-flex flex-column">
                         <a href="https://www.youtube.com/" target="_blank" style="text-decoration: none; color: inherit;">
                             <div class="row align-items-center">
                                 <div class="col-md-4">
-                                    <img class="width-90 rounded-3" style="height: 150px; min-width: 150px; object-fit: cover; object-position: center;"
+                                    <img class="width-90 rounded-3" style="height: 200px; min-width: 200px; object-fit: cover; object-position: center;"
                                          src=@Url.Content("~/Content/images/" + musicItem.AlbumPic) />
                                 </div>
                                 <div class="col-md-8">
@@ -149,7 +149,7 @@ ViewBag.Title = "Albams";
                             </div>
                         </a>
                     </div>
-                </div>
+                
             </div>
 
             
