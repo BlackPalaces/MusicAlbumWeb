@@ -1,8 +1,8 @@
 ﻿
 @model IEnumerable<MusicAlbumWeb.MusicAlbum>
 
-ViewBag.Title = "Artist";
-}
+    ViewBag.Title = "Artist";
+    }
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -124,3 +124,64 @@ ViewBag.Title = "Artist";
     </div>
 
     <h2 class="b">Artists</h2>
+
+
+    <h2 class="b">Artist</h2>
+    <div class="image-grid">
+        <!-- Row 1 -->
+        <div class="image-row">
+            <!-- Image 1 with caption -->
+            <figure class="image-container">
+                <a href="https://www.youtube.com/results?search_query=post+malone" target="_blank">
+                    <img src="~/image/PostMalone.png" alt="Post Malone">
+                    <figcaption>Post Malone</figcaption>
+            </figure>
+
+            <!-- Image 2 with caption -->
+            <figure class="image-container">
+                <a href="https://www.youtube.com/watch?v=kTJczUoc26U" target="_blank">
+                    <img src="~/image/justinB.png" alt="Justin Bieber">
+                    <figcaption>Justin Bieber</figcaption>
+            </figure>
+
+            <!-- Image 3 with caption -->
+            <figure class="image-container">
+                <a href="https://www.youtube.com/watch?v=JGwWNGJdvx8" target="_blank">
+                    <img src="~/image/Ed.png" alt="Ed Sheeran">
+                    <figcaption>Ed Sheeran</figcaption>
+            </figure>
+
+            <!-- Image 4 with caption -->
+            <figure class="image-container">
+                <a href="https://www.youtube.com/watch?v=_CL6n0FJZpk" target="_blank">
+                    <img src="~/image/snoop.png" alt="Snoop Dogg">
+                    <figcaption>Snoop Dogg</figcaption>
+            </figure>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            @for (var i = 0; i < Model.Count(); i++)
+            {
+                var musicItem = Model.ElementAt(i);
+
+                <div class="col-md-12">
+
+                    <a href="https://www.youtube.com/" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="row align-items-center">
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="overflow-hidden flex-nowrap">
+                                    <span class="text-muted d-block mb-2 small" style="font-size:20px;">
+                                        @musicItem.Artist
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            }
+        </div>
+    </div>
