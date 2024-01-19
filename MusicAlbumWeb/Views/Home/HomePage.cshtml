@@ -109,63 +109,75 @@ ViewBag.Title = "HomePage";
 	</div>
 	<h2 class="b">Music Genres</h2>
 	<div class="row">
-		<div class="col-sm-12 col-md-6 col-lg-4 mb-4 margin-top">
-			<div class="card text-dark card-has-bg click-col" style="background-image: url('https://media.istockphoto.com/id/1367739711/vector/sound-wave-heart-shape-music-equalizer-abstract-vector-illustration.jpg?s=612x612&w=0&k=20&c=S6xb1YMAk69fp-8A7hzYFa_ZJi9asnB3St6ucr6Gb-s=');">
-				<div class="card-img-overlay d-flex flex-column">
-					<div class="card-body">
-						<span class="card-meta mb-2 shadow1">FALL IN LOVE</span>
+		<a href="@Url.Action("MusicGenres", "MusicAlbums", new { type = "LOVE" })">
+			<div class="col-sm-12 col-md-6 col-lg-4 mb-4 margin-top">
+				<div class="card text-dark card-has-bg click-col" style="background-image: url('https://media.istockphoto.com/id/1367739711/vector/sound-wave-heart-shape-music-equalizer-abstract-vector-illustration.jpg?s=612x612&w=0&k=20&c=S6xb1YMAk69fp-8A7hzYFa_ZJi9asnB3St6ucr6Gb-s=');">
+					<div class="card-img-overlay d-flex flex-column">
+						<div class="card-body">
+							<span class="card-meta mb-2 shadow1">FALL IN LOVE</span>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</a>
 		<!--2-->
-		<div class="col-sm-12 col-md-6 col-lg-4 mb-4 margin-top">
-			<div class="card text-dark card-has-bg click-col" style="background-image: url('https://www.sciencefriday.com/wp-content/uploads/2022/12/jazz-trumpet.jpg');">
-				<div class="card-img-overlay d-flex flex-column">
-					<div class="card-body">
-						<span class="card-meta mb-2 shadow1">Jazz</span>
+		<a href="@Url.Action("MusicGenres", "MusicAlbums", new { type = "JAZZ" })">
+			<div class="col-sm-12 col-md-6 col-lg-4 mb-4 margin-top">
+				<div class="card text-dark card-has-bg click-col" style="background-image: url('https://www.sciencefriday.com/wp-content/uploads/2022/12/jazz-trumpet.jpg');">
+					<div class="card-img-overlay d-flex flex-column">
+						<div class="card-body">
+							<span class="card-meta mb-2 shadow1">Jazz</span>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</a>
 		<!--3-->
-		<div class="col-sm-12 col-md-6 col-lg-4 mb-4 margin-top">
-			<div class="card text-dark card-has-bg click-col" style="background-image: url('https://pyxis.nymag.com/v1/imgs/3a3/b1f/2141226b8ab1ae07afe4b541ee0d2b0825-11-yic-pop-essay.2x.h473.w710.jpg');">
-				<div class="card-img-overlay d-flex flex-column">
-					<div class="card-body">
-						<span class="card-meta mb-2 shadow1">POP</span>
+		<a href="@Url.Action("MusicGenres", "MusicAlbums", new { type = "POP" })">
+			<div class="col-sm-12 col-md-6 col-lg-4 mb-4 margin-top">
+				<div class="card text-dark card-has-bg click-col" style="background-image: url('https://pyxis.nymag.com/v1/imgs/3a3/b1f/2141226b8ab1ae07afe4b541ee0d2b0825-11-yic-pop-essay.2x.h473.w710.jpg');">
+					<div class="card-img-overlay d-flex flex-column">
+						<div class="card-body">
+							<span class="card-meta mb-2 shadow1">POP</span>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</a>
 		<!--4-->
-		<div class="col-sm-12 col-md-6 col-lg-4 mb-4 margin-top">
-			<div class="card text-dark card-has-bg click-col" style="background-image: url('https://ns-static.s3.us-east-va.perf.cloud.ovh.us/img/categories/styles/classical-music_1600x900.jpg');">
-				<div class="card-img-overlay d-flex flex-column">
-					<div class="card-body">
-						<span class="card-meta mb-2 shadow1">Classic</span>
+		<a href="@Url.Action("MusicGenres", "MusicAlbums", new { type = "CLASSIC" })">
+			<div class="col-sm-12 col-md-6 col-lg-4 mb-4 margin-top">
+				<div class="card text-dark card-has-bg click-col" style="background-image: url('https://ns-static.s3.us-east-va.perf.cloud.ovh.us/img/categories/styles/classical-music_1600x900.jpg');">
+					<div class="card-img-overlay d-flex flex-column">
+						<div class="card-body">
+							<span class="card-meta mb-2 shadow1">Classic</span>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-sm-12 col-md-6 col-lg-4 mb-4 margin-top">
-			<div class="card text-dark card-has-bg click-col" style="background-image: url('https://www.rollingstone.com/wp-content/uploads/2022/05/210603_200rapalbums_FINAL.jpg?w=1581&h=1054&crop=1');">
-				<div class="card-img-overlay d-flex flex-column">
-					<div class="card-body">
-						<span class="card-meta mb-2 shadow1">RAP</span>
+		</a>
+		<a href="@Url.Action("MusicGenres", "MusicAlbums", new { type = "RAP" })">
+			<div class="col-sm-12 col-md-6 col-lg-4 mb-4 margin-top">
+				<div class="card text-dark card-has-bg click-col" style="background-image: url('https://www.rollingstone.com/wp-content/uploads/2022/05/210603_200rapalbums_FINAL.jpg?w=1581&h=1054&crop=1');">
+					<div class="card-img-overlay d-flex flex-column">
+						<div class="card-body">
+							<span class="card-meta mb-2 shadow1">RAP</span>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-sm-12 col-md-6 col-lg-4 mb-4 margin-top">
-			<div class="card text-dark card-has-bg click-col" style="background-image: url('https://img.freepik.com/premium-photo/illustration-rock-guitarist-digital-art-ai_800563-5930.jpg');">
-				<div class="card-img-overlay d-flex flex-column">
-					<div class="card-body">
-						<span class="card-meta mb-2 shadow1">Rock</span>
+		</a>
+		<a href="@Url.Action("MusicGenres", "MusicAlbums", new { type = "ROCK" })">
+			<div class="col-sm-12 col-md-6 col-lg-4 mb-4 margin-top">
+				<div class="card text-dark card-has-bg click-col" style="background-image: url('https://img.freepik.com/premium-photo/illustration-rock-guitarist-digital-art-ai_800563-5930.jpg');">
+					<div class="card-img-overlay d-flex flex-column">
+						<div class="card-body">
+							<span class="card-meta mb-2 shadow1">Rock</span>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+			</a>
 	</div>
 
 

@@ -24,6 +24,20 @@ namespace MusicAlbumWeb
         {
             return View();
         }
+        public ActionResult MusicGenres()
+        {
+            var db = new Entities();
+
+            // ดึงค่า parameter "type" จาก query string
+            string type = Request.QueryString["type"];
+
+        
+
+            // ในที่นี้คุณสามารถใช้ค่า type ที่ดึงมาเพื่อกรองข้อมูลที่คุณต้องการจาก database
+            var data = db.MusicAlbum.Where(album => album.Type == type).ToList();
+
+            return View(data);
+        }
         public JsonResult GetDataJson()
         {
             var db = new Entities();
