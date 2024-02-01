@@ -14,6 +14,15 @@
           <Property Name="Songs" Type="varchar(max)" />
           <Property Name="AlbumPic" Type="varchar" MaxLength="250" />
         </EntityType>
+        <EntityType Name="Artist">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Artistname" Type="nvarchar(max)" />
+          <Property Name="Songs" Type="varchar(max)" />
+          <Property Name="ArtistPic" Type="varchar" MaxLength="250" />
+        </EntityType>
         <EntityType Name="AspNetUsers">
           <Key>
             <PropertyRef Name="Id" />
@@ -32,6 +41,15 @@
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="Status" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="Musicid" Type="int" />
+          <Property Name="Userid" Type="int" />
+        </EntityType>
         <EntityType Name="MusicAlbum">
           <Key>
             <PropertyRef Name="Id" />
@@ -45,10 +63,22 @@
           <Property Name="Hit" Type="int" />
           <Property Name="Type" Type="nvarchar" MaxLength="250" />
         </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="Musicid" Type="int" />
+          <Property Name="Userid" Type="int" />
+        </EntityType>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="Album" EntityType="Self.Album" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Artist" EntityType="Self.Artist" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MusicAlbum" EntityType="Self.MusicAlbum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -89,6 +119,9 @@
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
           <EntitySet Name="MusicAlbum" EntityType="Self.MusicAlbum" />
           <EntitySet Name="Album" EntityType="Model.Album" />
+          <EntitySet Name="Artist" EntityType="Model.Artist" />
+          <EntitySet Name="Comment" EntityType="Model.Comment" />
+          <EntitySet Name="Table" EntityType="Model.Table" />
         </EntityContainer>
         <EntityType Name="Album">
           <Key>
@@ -98,6 +131,33 @@
           <Property Name="Albumname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Songs" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="AlbumPic" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Artist">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Artistname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Songs" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ArtistPic" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Comment1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Musicid" Type="Int32" />
+          <Property Name="Userid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Musicid" Type="Int32" />
+          <Property Name="Userid" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -144,6 +204,36 @@
                 <ScalarProperty Name="AlbumPic" ColumnName="AlbumPic" />
                 <ScalarProperty Name="Songs" ColumnName="Songs" />
                 <ScalarProperty Name="Albumname" ColumnName="Albumname" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Artist">
+            <EntityTypeMapping TypeName="Model.Artist">
+              <MappingFragment StoreEntitySet="Artist">
+                <ScalarProperty Name="ArtistPic" ColumnName="ArtistPic" />
+                <ScalarProperty Name="Songs" ColumnName="Songs" />
+                <ScalarProperty Name="Artistname" ColumnName="Artistname" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comment">
+            <EntityTypeMapping TypeName="Model.Comment">
+              <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="Musicid" ColumnName="Musicid" />
+                <ScalarProperty Name="Comment1" ColumnName="Comment" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table">
+            <EntityTypeMapping TypeName="Model.Table">
+              <MappingFragment StoreEntitySet="Table">
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="Musicid" ColumnName="Musicid" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

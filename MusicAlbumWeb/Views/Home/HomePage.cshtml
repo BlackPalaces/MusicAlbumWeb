@@ -21,7 +21,7 @@ ViewBag.Title = "HomePage";
 
 		#search-input {
 			padding: 10px;
-			width: 300px;
+			width: 700px;
 			font-size: 1em;
 			color: #333; /* Text color in the input field */
 			background-color: #f2f2f2; /* Light gray background */
@@ -103,10 +103,10 @@ ViewBag.Title = "HomePage";
 </head>
 <body>
 
-	<div id="search-bar">
-		<input type="text" id="search-input" placeholder="Search...">
-		<button id="search-button">Search</button>
+	<div id="search-bar" style="max-width:max-content; " >
+		<input type="text" id="search-input" placeholder="Search..." style=" width: 600px; max-width:600px; ">
 	</div>
+
 	<h2 class="b">Music Genres</h2>
 	<div class="row">
 		<a href="@Url.Action("MusicGenres", "MusicAlbums", new { type = "LOVE" })">
