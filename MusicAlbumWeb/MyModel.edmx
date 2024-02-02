@@ -63,22 +63,12 @@
           <Property Name="Hit" Type="int" />
           <Property Name="Type" Type="nvarchar" MaxLength="250" />
         </EntityType>
-        <EntityType Name="Table">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Comment" Type="nvarchar(max)" />
-          <Property Name="Musicid" Type="int" />
-          <Property Name="Userid" Type="int" />
-        </EntityType>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="Album" EntityType="Self.Album" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Artist" EntityType="Self.Artist" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MusicAlbum" EntityType="Self.MusicAlbum" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -121,7 +111,6 @@
           <EntitySet Name="Album" EntityType="Model.Album" />
           <EntitySet Name="Artist" EntityType="Model.Artist" />
           <EntitySet Name="Comment" EntityType="Model.Comment" />
-          <EntitySet Name="Table" EntityType="Model.Table" />
         </EntityContainer>
         <EntityType Name="Album">
           <Key>
@@ -147,15 +136,6 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Comment1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Musicid" Type="Int32" />
-          <Property Name="Userid" Type="Int32" />
-        </EntityType>
-        <EntityType Name="Table">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Musicid" Type="Int32" />
           <Property Name="Userid" Type="Int32" />
         </EntityType>
@@ -224,16 +204,6 @@
                 <ScalarProperty Name="Userid" ColumnName="Userid" />
                 <ScalarProperty Name="Musicid" ColumnName="Musicid" />
                 <ScalarProperty Name="Comment1" ColumnName="Comment" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Table">
-            <EntityTypeMapping TypeName="Model.Table">
-              <MappingFragment StoreEntitySet="Table">
-                <ScalarProperty Name="Userid" ColumnName="Userid" />
-                <ScalarProperty Name="Musicid" ColumnName="Musicid" />
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

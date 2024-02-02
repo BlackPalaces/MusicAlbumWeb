@@ -30,6 +30,5 @@ namespace MusicAlbumWeb
         public virtual DbSet<Album> Album { get; set; }
         public virtual DbSet<Artist> Artist { get; set; }
         public virtual DbSet<Comment> Comment { get; set; }
-        public virtual DbSet<Table> Table { get; set; }
     }
 }
