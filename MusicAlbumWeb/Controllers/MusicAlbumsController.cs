@@ -76,9 +76,24 @@ namespace MusicAlbumWeb
                 // หากไม่ได้ล็อกอิน ให้ redirect ไปยังหน้าล็อกอิน
                 return RedirectToAction("Login", "Account");
             }
+            var userEmail = User.Identity.Name;
 
-            // หากล็อกอินแล้ว ให้แสดงหน้า MyFavorite
-            return View();
+         
+                using (var db = new Entities())
+                {
+                    // ดึงรายการ id เพลงที่ผู้ใช้ชอบจากฐานข้อมูล
+                    var favoriteMusicIds = db.FavoriteMusic
+                        .Where(f => f.UserEmail == userEmail)
+                        .Select(f => f.MusicFavId)
+                        .ToList();
+
+                    // ดึงเพลงที่ผู้ใช้ชอบจากฐานข้อมูล MusicAlbum
+                    var favoriteSongs = db.MusicAlbum
+                        .Where(m => favoriteMusicIds.Contains(m.Id))
+                        .ToList();
+
+                    return View(favoriteSongs);
+            }
         }
 
         public ActionResult MusicPlay(int id)
