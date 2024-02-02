@@ -267,6 +267,7 @@
     <Content Include="Content\Images\Heart.png" />
     <Content Include="Content\Images\naruto.jpg" />
     <Content Include="Content\Images\plate.png" />
+    <Content Include="Content\Images\singer.png" />
     <Content Include="Content\Images\user.png" />
     <Content Include="Content\Images\Frame9.png" />
     <Content Include="Content\Images\List.png" />
@@ -363,6 +364,7 @@
     <Content Include="Views\Albums\Index.cshtml" />
     <Content Include="Views\MusicAlbums\Chart.cshtml" />
     <Content Include="Views\MusicAlbums\MusicGenres.cshtml" />
+    <Content Include="Views\MusicAlbums\MusicPlay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

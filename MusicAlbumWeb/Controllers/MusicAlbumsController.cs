@@ -72,6 +72,17 @@ namespace MusicAlbumWeb
             return View();
         }
 
+        public ActionResult MusicPlay(int id)
+        {
+           
+            var db = new Entities();
+            var MusicforP = db.MusicAlbum.Where(m => m.Id == id).ToList();
+
+            
+            return View(MusicforP);
+        }
+
+
         // GET: MusicAlbums/Details/5
         public ActionResult Details(int? id)
         {
