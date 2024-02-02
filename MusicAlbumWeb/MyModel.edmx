@@ -50,6 +50,14 @@
           <Property Name="Musicid" Type="int" />
           <Property Name="Userid" Type="int" />
         </EntityType>
+        <EntityType Name="FavoriteMusic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MusicFavId" Type="int" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="256" />
+        </EntityType>
         <EntityType Name="MusicAlbum">
           <Key>
             <PropertyRef Name="Id" />
@@ -63,12 +71,31 @@
           <Property Name="Hit" Type="int" />
           <Property Name="Type" Type="nvarchar" MaxLength="250" />
         </EntityType>
+        <Association Name="FK__FavoriteM__Music__160F4887">
+          <End Role="MusicAlbum" Type="Self.MusicAlbum" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FavoriteMusic" Type="Self.FavoriteMusic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MusicAlbum">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FavoriteMusic">
+              <PropertyRef Name="MusicFavId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="Album" EntityType="Self.Album" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Artist" EntityType="Self.Artist" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FavoriteMusic" EntityType="Self.FavoriteMusic" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MusicAlbum" EntityType="Self.MusicAlbum" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__FavoriteM__Music__160F4887" Association="Self.FK__FavoriteM__Music__160F4887">
+            <End Role="MusicAlbum" EntitySet="MusicAlbum" />
+            <End Role="FavoriteMusic" EntitySet="FavoriteMusic" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -104,6 +131,7 @@
           <Property Name="Musicpic" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Hit" Type="Int32" />
           <Property Name="Type" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FavoriteMusic" Relationship="Model.FK__FavoriteM__Music__160F4887" FromRole="MusicAlbum" ToRole="FavoriteMusic" />
         </EntityType>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
@@ -111,6 +139,11 @@
           <EntitySet Name="Album" EntityType="Model.Album" />
           <EntitySet Name="Artist" EntityType="Model.Artist" />
           <EntitySet Name="Comment" EntityType="Model.Comment" />
+          <EntitySet Name="FavoriteMusic" EntityType="Model.FavoriteMusic" />
+          <AssociationSet Name="FK__FavoriteM__Music__160F4887" Association="Model.FK__FavoriteM__Music__160F4887">
+            <End Role="MusicAlbum" EntitySet="MusicAlbum" />
+            <End Role="FavoriteMusic" EntitySet="FavoriteMusic" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Album">
           <Key>
@@ -139,6 +172,29 @@
           <Property Name="Musicid" Type="Int32" />
           <Property Name="Userid" Type="Int32" />
         </EntityType>
+        <EntityType Name="FavoriteMusic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MusicFavId" Type="Int32" />
+          <NavigationProperty Name="MusicAlbum" Relationship="Model.FK__FavoriteM__Music__160F4887" FromRole="FavoriteMusic" ToRole="MusicAlbum" />
+          <Property Name="UserEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__FavoriteM__Music__160F4887">
+          <End Type="Model.MusicAlbum" Role="MusicAlbum" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model.FavoriteMusic" Role="FavoriteMusic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MusicAlbum">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FavoriteMusic">
+              <PropertyRef Name="MusicFavId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -204,6 +260,15 @@
                 <ScalarProperty Name="Userid" ColumnName="Userid" />
                 <ScalarProperty Name="Musicid" ColumnName="Musicid" />
                 <ScalarProperty Name="Comment1" ColumnName="Comment" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FavoriteMusic">
+            <EntityTypeMapping TypeName="Model.FavoriteMusic">
+              <MappingFragment StoreEntitySet="FavoriteMusic">
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="MusicFavId" ColumnName="MusicFavId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

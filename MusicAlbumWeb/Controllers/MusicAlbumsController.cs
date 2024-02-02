@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.IO;
+using Microsoft.AspNet.Identity;
 
 namespace MusicAlbumWeb
 {
@@ -69,6 +70,14 @@ namespace MusicAlbumWeb
 
         public ActionResult MyFavorite()
         {
+            // ตรวจสอบสถานะการล็อกอินของผู้ใช้
+            if (!User.Identity.IsAuthenticated)
+            {
+                // หากไม่ได้ล็อกอิน ให้ redirect ไปยังหน้าล็อกอิน
+                return RedirectToAction("Login", "Account");
+            }
+
+            // หากล็อกอินแล้ว ให้แสดงหน้า MyFavorite
             return View();
         }
 
@@ -76,11 +85,13 @@ namespace MusicAlbumWeb
         {
            
             var db = new Entities();
+            var userId = User.Identity.GetUserId();
             var MusicforP = db.MusicAlbum.Where(m => m.Id == id).ToList();
+            ViewBag.UserId = userId;
 
-            
             return View(MusicforP);
         }
+
 
 
         // GET: MusicAlbums/Details/5
