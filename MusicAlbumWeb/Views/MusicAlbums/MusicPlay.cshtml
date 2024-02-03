@@ -5,6 +5,8 @@
 }
 <head>
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script src="~/ScriptMusic/dropdown.js"></script>
+	<link href="~/Content/3dotsmenu.css" rel="stylesheet" />
 	<style>
 		.media {
 			display: flex;
@@ -128,17 +130,38 @@
 			{
 				var user = db.AspNetUsers.SingleOrDefault(u => u.Email == comment.UserEmail);
 
-				<div style="background-color: #768388; padding: 20px; margin: 20px; border-radius: 10px; ">
-					<div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
-						<div class="g-mb-15">
-							<h5 class="h5 g-color-gray-dark-v1 mb-0">@user.UserName</h5>
-						</div>
-
-						<p class="g-color-gray-dark-v1">
-						@comment.Comment1 <br />
-						</p>
-					</div>
+	<div style="background-color: #768388; padding: 20px; margin: 20px; border-radius: 10px; ">
+		<div style="display: flex; justify-content: space-between; align-items: center; ">
+			<div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
+				<div class="g-mb-15">
+					<h5 class="h5 g-color-gray-dark-v1 mb-0">@user.UserName</h5>
 				</div>
+				<div id="comment-@comment.Id" class="comment-text">
+					<p class="g-color-gray-dark-v1">
+						@comment.Comment1 <br />
+					</p>
+				</div>
+				<div style="display: none;" id="edit-comment-@comment.Id">
+					<input type="text" style="color: #394246; border-radius:5px;" class="comment-input" id="commentInput-@comment.Id" value="@comment.Comment1" />
+					<button style="background-color: #394246; border-radius:5px; " onclick="updateCommentInline(@comment.Id)">Save</button>
+				</div>
+			</div>
+			<div class="dropdown">
+				<div class="dots-icon @((User.Identity.Name != comment.UserEmail) ? "black-color" : "white-color")" onclick="toggleDropdown(this)">&#8286;</div>
+				<div class="dropdown-content">
+					@if (User.Identity.Name == comment.UserEmail)
+					{
+					<a href="#" onclick="editCommentInline(@comment.Id)">
+						<img src="~/Content/Images/penedit.png" alt="Edit" class="icon"> Edit
+					</a>
+						<a href="#" onclick="deleteComment(@comment.Id)">
+							<img src="~/Content/Images/bindelete.png" alt="Delete" class="icon"> Delete
+						</a>
+					}
+				</div>
+			</div>
+		</div>
+	</div>
 			}
 		}
 	</div>

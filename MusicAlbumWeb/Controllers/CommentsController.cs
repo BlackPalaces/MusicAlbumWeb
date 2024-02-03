@@ -165,12 +165,64 @@ namespace MusicAlbumWeb.Controllers
                 }
 
                 return Json(new { success = false, message = "ผู้ใช้ไม่ได้ล็อกอิน" });
+                // หากไม่ได้ล็อกอิน ให้ redirect ไปยังหน้าล็อกอิน
+                return RedirectToAction("Login", "Account");
             }
             catch (Exception ex)
             {
                 return Json(new { success = false, message = "เกิดข้อผิดพลาดบางอย่าง", error = ex.Message });
             }
         }
+
+      
+        [HttpPost]
+        public ActionResult DeleteComment(int commentId)
+        {
+            try
+            {
+                var db = new Entities();
+                var comment = db.Comment.Find(commentId);
+
+                if (comment == null)
+                {
+                    return Json(new { success = false, message = "ไม่พบคอมเมนต์ที่ต้องการลบ" });
+                }
+
+                db.Comment.Remove(comment);
+                db.SaveChanges();
+
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "เกิดข้อผิดพลาดบางอย่าง", error = ex.Message });
+            }
+        }
+
+        [HttpPost]
+        public ActionResult UpdateComment(int commentId, string editedComment)
+        {
+            try
+            {
+                var db = new Entities();
+                var comment = db.Comment.Find(commentId);
+
+                if (comment == null)
+                {
+                    return Json(new { success = false, message = "ไม่พบคอมเมนต์ที่ต้องการแก้ไข" });
+                }
+
+                comment.Comment1 = editedComment;
+                db.SaveChanges();
+
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "เกิดข้อผิดพลาดบางอย่าง", error = ex.Message });
+            }
+        }
+
 
     }
 }
