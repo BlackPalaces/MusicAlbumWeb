@@ -138,6 +138,8 @@ namespace MusicAlbumWeb.Controllers
                 var userEmail = User.Identity.Name;
                 var existingFavorite = db.FavoriteMusic.SingleOrDefault(f => f.MusicFavId == musicId && f.UserEmail == userEmail);
 
+                var musicAlbum = db.MusicAlbum.Find(musicId);
+
                 if (existingFavorite == null)
                 {
                     var newFavorite = new FavoriteMusic
@@ -147,10 +149,12 @@ namespace MusicAlbumWeb.Controllers
                     };
 
                     db.FavoriteMusic.Add(newFavorite);
+                    musicAlbum.Hit = (musicAlbum.Hit ?? 0) + 1;
                 }
                 else
                 {
                     db.FavoriteMusic.Remove(existingFavorite);
+                    musicAlbum.Hit = (musicAlbum.Hit ?? 0) - 1;
                 }
 
                 db.SaveChanges();
