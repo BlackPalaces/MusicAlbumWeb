@@ -18,6 +18,7 @@ function postComment(commentText, musicId) {
         contentType: 'application/json; charset=utf-8',
         success: function (response) {
             console.log(response);
+            //
         },
         error: function (error) {
             console.log(error);
