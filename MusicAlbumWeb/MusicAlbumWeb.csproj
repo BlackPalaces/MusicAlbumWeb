@@ -212,9 +212,13 @@
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FavoriteMusicsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PhoneMusicAlbumsController.cs" />
+    <Compile Include="FavoriteMusic.cs">
+      <DependentUpon>MyModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -264,9 +268,12 @@
     <Content Include="Content\Images\album.png" />
     <Content Include="Content\Images\chart.png" />
     <Content Include="Content\Images\download %282%29 1.png" />
+    <Content Include="Content\Images\favoriteF.png" />
+    <Content Include="Content\Images\favoriteT.png" />
     <Content Include="Content\Images\Heart.png" />
     <Content Include="Content\Images\naruto.jpg" />
     <Content Include="Content\Images\plate.png" />
+    <Content Include="Content\Images\singer.png" />
     <Content Include="Content\Images\user.png" />
     <Content Include="Content\Images\Frame9.png" />
     <Content Include="Content\Images\List.png" />
@@ -293,6 +300,7 @@
       <DependentUpon>MyModel.edmx</DependentUpon>
       <LastGenOutput>MyModel.cs</LastGenOutput>
     </Content>
+    <Content Include="ScriptMusic\MyFavoriteMusic.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="MyModel.edmx">
@@ -363,6 +371,12 @@
     <Content Include="Views\Albums\Index.cshtml" />
     <Content Include="Views\MusicAlbums\Chart.cshtml" />
     <Content Include="Views\MusicAlbums\MusicGenres.cshtml" />
+    <Content Include="Views\MusicAlbums\MusicPlay.cshtml" />
+    <Content Include="Views\FavoriteMusics\Create.cshtml" />
+    <Content Include="Views\FavoriteMusics\Delete.cshtml" />
+    <Content Include="Views\FavoriteMusics\Details.cshtml" />
+    <Content Include="Views\FavoriteMusics\Edit.cshtml" />
+    <Content Include="Views\FavoriteMusics\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

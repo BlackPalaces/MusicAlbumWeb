@@ -1,7 +1,42 @@
-﻿
+﻿@model IEnumerable<MusicAlbumWeb.MusicAlbum>
 @{
-    ViewBag.Title = "MyFavorite";
+	ViewBag.Title = "MyFavorite";
 }
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>YouTube Audio Player</title>
+	<link href="~/Content/CardStyles.css" rel="stylesheet" />
+	<style>
+		.thumbnail {
+			background-color: transparent;
+			width: fit-content;
+			border: none;
+		}
 
-<h2>MyFavorite</h2>
+	</style>
+</head>
+<body style="flex:1;">
 
+	<div class="container " style="background-color: #2E3538; width: 1100px; border-radius: 10px; margin-top: 30px;">
+		<div class="container d-flex justify-content-center">
+			<div class="row" style="margin-top:20px;">
+				<h2 style="text-shadow: 0 0 0.2em #4ab89f, 0 0 0.2em #4ab89f;">MyFavorite</h2>
+				@for (var i = 0; i < Model.Count(); i++)
+				{
+					var song = Model.ElementAt(i);
+					<a href="@Url.Action("MusicPlay", "MusicAlbums", new { id = song.Id })">
+						<div class="col-md-2 card-has-bg" style="padding:20px;">
+							<div class="thumbnail" style="background-color: #768388; border: none; ">
+								<img class="img-responsive" style="max-width: 120%; height: 200px; object-fit: cover; object-position: center; border-radius:5px;"
+									 src=@Url.Content("~/Content/images/" + (song.Musicpic)) />
+							</div>
+						</div>
+					</a>
+				}
+			</div>
+		</div>
+	</div>
+</body>
+</html>

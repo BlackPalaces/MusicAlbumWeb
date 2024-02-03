@@ -16,6 +16,8 @@ namespace MusicAlbumWeb
         public virtual DbSet<Artist> Artist { get; set; }
         public virtual DbSet<Comment> Comment { get; set; }
         public virtual DbSet<MusicAlbum> MusicAlbum { get; set; }
+        public virtual DbSet<FavoriteMusic> FavoriteMusic { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

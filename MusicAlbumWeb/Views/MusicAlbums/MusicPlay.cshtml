@@ -1,0 +1,112 @@
+﻿@model IEnumerable<MusicAlbumWeb.MusicAlbum>
+@{
+	ViewBag.Title = "MusicPlay";
+	
+}
+<head>
+	<style>
+		.media {
+			display: flex;
+			align-items: center;
+		}
+
+		.video-container {
+			margin-right: 40px; /* ระยะห่างระหว่างวีดีโอกับข้อความ */
+			margin-left: 50px;
+		}
+
+			.video-container iframe {
+				width: 640px;
+				height: 360px;
+			}
+
+		.text-container {
+			/*flex-grow: 1; /* ทำให้ข้อความขยายเต็มพื้นที่ที่เหลือ */
+			width: 500px;
+			height: 360px;
+		}
+
+		.h2 {
+			font-weight: bold;
+			font-size: 30px;
+		}
+	</style>
+</head>
+<body>
+	@foreach (var music in Model)
+	{
+		<div class="media" style="margin-top: 50px; height:400px;">
+			<div class="video-container">
+				@{
+					var videoId = "";
+
+					// ตรวจสอบว่ามีลิงก์ YouTube หรือไม่
+					if (!string.IsNullOrEmpty(music.Musiclink) && music.Musiclink.Contains("youtube.com"))
+					{
+						// ใช้ Regular Expression เพื่อค้นหา Video ID จากลิงก์ YouTube
+						var match = System.Text.RegularExpressions.Regex.Match(music.Musiclink, @"(?:\?|&)v=([^&]+)");
+
+						if (match.Success)
+						{
+							videoId = match.Groups[1].Value;
+						}
+					}
+				}
+
+				@if (!string.IsNullOrEmpty(videoId))
+				{
+					<iframe width="640" height="360" frameborder="0" src="https://www.youtube.com/embed/@videoId">
+					</iframe>
+				}
+				else
+				{
+					<p>ไม่พบวีดีโอที่สามารถเล่นได้</p>
+				}
+			</div>
+
+			<div class="text-container">
+				<img class="width-90 rounded-3" style="border-radius:5px; height: 150px; min-width: 150px; object-fit: cover; object-position: center;" src=@Url.Content("~/Content/images/" + music.Musicpic) />
+				<div style="margin-top:10px;">
+					<span class="h2">@music.Musicname</span>
+				</div>
+				<div>
+					<div>
+						<span class="text-muted d-block mb-2 small" style="font-size: 20px; color: #b4d3db;">
+							<img src="~/Content/Images/singer.png" alt="Contact Icon" class="icon" />
+							@music.Artist
+						</span>
+					</div>
+					<div>
+						<span class="text-muted d-block mb-2 small" style="font-size: 20px; color: #b4d3db;">
+							<img src="~/Content/Images/Mic.png" alt="Contact Icon" class="icon" />
+							@music.Type
+						</span>
+					</div>
+					<div>
+						<span class="text-muted d-block mb-2 small" style="font-size: 20px; color: #b4d3db;">
+							<img src="~/Content/Images/Music.png" alt="Contact Icon" class="icon" />
+							@music.Album
+						</span>
+					</div>
+					<div style="margin-top:0px;">
+						@if (User.Identity.IsAuthenticated)
+						{
+							var db = new Entities();
+							var isFavorite = db.FavoriteMusic.Any(f => f.MusicFavId == music.Id && f.UserEmail == User.Identity.Name);
+
+							<img id="heartImage_@(music.Id)" src="@(isFavorite ? "/Content/Images/favoriteT.png" : "/Content/Images/favoriteF.png")" style="height: 50px; min-width: 50px;" onclick="toggleFavorite(@(music.Id))" />
+						}
+						else
+						{
+							<a href="@Url.Action("Login", "Account")">
+								<img src="/Content/Images/favoriteF.png" style="height: 50px; min-width: 50px;" />
+								</a>
+								}
+								<script src="~/ScriptMusic/MyFavoriteMusic.js"></script>
+						</div>
+
+				</div>
+			</div>
+		</div>
+	}
+</body>

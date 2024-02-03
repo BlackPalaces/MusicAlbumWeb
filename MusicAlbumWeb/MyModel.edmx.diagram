@@ -10,6 +10,8 @@
         <EntityTypeShape EntityType="Model.Album" Width="1.5" PointX="3.375" PointY="4.75" />
         <EntityTypeShape EntityType="Model.Artist" Width="1.5" PointX="5.75" PointY="0.75" />
         <EntityTypeShape EntityType="Model.Comment" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="Model.FavoriteMusic" Width="1.5" PointX="5" PointY="8.25" />
+        <AssociationConnector Association="Model.FK__FavoriteM__Music__160F4887" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
