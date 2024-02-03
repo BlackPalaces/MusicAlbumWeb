@@ -18,6 +18,7 @@ namespace MusicAlbumWeb
         public Entities()
             : base("name=Entities")
         {
+            Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
