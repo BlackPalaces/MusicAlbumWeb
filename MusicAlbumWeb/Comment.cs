@@ -18,5 +18,6 @@ namespace MusicAlbumWeb
         public string Comment1 { get; set; }
         public Nullable<int> Musicid { get; set; }
         public string UserEmail { get; set; }
+        public object AspNetUser { get; internal set; }
     }
 }

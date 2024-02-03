@@ -4,13 +4,15 @@ $(document).ready(function () {
         var commentText = document.getElementById("commentText").value;
         var musicId = $(this).data('music-id');
 
-        console.log("commentText:", commentText);  // แสดง commentText ใน Developer Console
+        console.log("commentText:", commentText);  
         postComment(commentText, musicId);
+
+        document.getElementById("commentText").value = "";
     });
 });
 
 function postComment(commentText, musicId) {
-    // ส่ง AJAX request ไปยังเซิร์ฟเวอร์
+
     $.ajax({
         url: '/Comments/PostComment',
         type: 'POST',
@@ -18,7 +20,11 @@ function postComment(commentText, musicId) {
         contentType: 'application/json; charset=utf-8',
         success: function (response) {
             console.log(response);
-            //
+            // แสดงป๊อปอัพเมื่อคอมเมนต์เรียบร้อย
+           // alert('Comment posted successfully!');
+
+            // รีเฟรชหน้าเพื่อให้คอมเมนต์แสดง
+            location.reload();
         },
         error: function (error) {
             console.log(error);
