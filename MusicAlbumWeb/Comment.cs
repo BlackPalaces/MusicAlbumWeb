@@ -17,6 +17,6 @@ namespace MusicAlbumWeb
         public int Id { get; set; }
         public string Comment1 { get; set; }
         public Nullable<int> Musicid { get; set; }
-        public Nullable<int> Userid { get; set; }
+        public string UserEmail { get; set; }
     }
 }

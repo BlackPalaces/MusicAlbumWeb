@@ -45,10 +45,10 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Comment" Type="nvarchar(max)" />
           <Property Name="Musicid" Type="int" />
-          <Property Name="Userid" Type="int" />
+          <Property Name="UserEmail" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="FavoriteMusic">
           <Key>
@@ -170,7 +170,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Comment1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Musicid" Type="Int32" />
-          <Property Name="Userid" Type="Int32" />
+          <Property Name="UserEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="FavoriteMusic">
           <Key>
@@ -257,7 +257,7 @@
           <EntitySetMapping Name="Comment">
             <EntityTypeMapping TypeName="Model.Comment">
               <MappingFragment StoreEntitySet="Comment">
-                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
                 <ScalarProperty Name="Musicid" ColumnName="Musicid" />
                 <ScalarProperty Name="Comment1" ColumnName="Comment" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

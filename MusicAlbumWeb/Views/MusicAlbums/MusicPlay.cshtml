@@ -1,9 +1,10 @@
 ﻿@model IEnumerable<MusicAlbumWeb.MusicAlbum>
 @{
 	ViewBag.Title = "MusicPlay";
-	
+
 }
 <head>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<style>
 		.media {
 			display: flex;
@@ -100,13 +101,66 @@
 						{
 							<a href="@Url.Action("Login", "Account")">
 								<img src="/Content/Images/favoriteF.png" style="height: 50px; min-width: 50px;" />
-								</a>
-								}
-								<script src="~/ScriptMusic/MyFavoriteMusic.js"></script>
-						</div>
+							</a>
+						}
+						<script src="~/ScriptMusic/MyFavoriteMusic.js"></script>
+					</div>
 
 				</div>
 			</div>
 		</div>
-	}
+					}
+
+<div style="display: flex; justify-content: space-between; padding:30px; width:auto; margin-top:100px;">
+	<div style="align-items: center; margin-left: 0px; width: 700px; background-color: #394246; border-radius: 10px; padding: 10px; ">
+		<div>
+			<span style="color: aliceblue; font-size: 2em; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; ">
+				Comment
+			</span>
+		</div>
+
+		@foreach (var music in Model)
+		{
+			var db = new Entities();
+			var CommentThisSong = db.Comment.Where(c => c.Musicid == music.Id).ToList();
+
+			foreach (var comment in CommentThisSong)
+			{
+				var user = db.AspNetUsers.SingleOrDefault(u => u.Email == comment.UserEmail);
+
+				<div style="background-color: #768388; padding: 20px; margin: 20px; border-radius: 10px; ">
+					<div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
+						<div class="g-mb-15">
+							<h4 class="h4 g-color-gray-dark-v1 mb-0">@user.UserName</h4>
+						</div>
+
+						<p class="g-color-gray-dark-v1">
+							Comment: @comment.Comment1 <br />
+						</p>
+					</div>
+				</div>
+			}
+		}
+	</div>
+
+
+
+
+	<div style="background-color: #394246; width: 400px; height:fit-content; border-radius: 10px; padding: 15px; margin-right:10px;">
+		<form id="algin-form">
+			<div class="form-group">
+				<h4>Leave a comment</h4>
+				<label for="message">Message</label>
+				<textarea name="msg" id="commentText" cols="30" rows="5" class="form-control" style="background-color: black;"></textarea>
+			</div>
+			<div class="form-group" id="comment-form">
+				@foreach (var music in Model)
+				{
+					<button style="background-color: #768388" type="button" class="btn post-comment-btn" data-music-id="@music.Id">Post Comment</button>
+				}
+				<script src="~/ScriptMusic/MyComment.js"></script>
+			</div>
+		</form>
+	</div>
+</div>
 </body>
