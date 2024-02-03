@@ -58,7 +58,7 @@
 
 				@if (!string.IsNullOrEmpty(videoId))
 				{
-					<iframe width="640" height="360" frameborder="0" src="https://www.youtube.com/embed/@videoId">
+					<iframe width="640" height="360" frameborder="0" style="border-radius: 8px;" src="https://www.youtube.com/embed/@videoId">
 					</iframe>
 				}
 				else
@@ -170,7 +170,7 @@
 			<div class="form-group">
 				<h4>Leave a comment</h4>
 				<label for="message">Message</label>
-				<textarea name="msg" id="commentText" cols="30" rows="5" class="form-control" style="background-color: black;"></textarea>
+				<textarea name="msg" id="commentText" cols="30" rows="5" class="form-control" style="background-color: black; color:#b4d3db;"></textarea>
 			</div>
 			<div class="form-group" id="comment-form">
 				@foreach (var music in Model)
