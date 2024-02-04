@@ -81,8 +81,10 @@
 					</div>
 					<div>
 						<span class="text-muted d-block mb-2 small" style="font-size: 20px; color: #b4d3db;">
-							<img src="~/Content/Images/Mic.png" alt="Contact Icon" class="icon" />
-							@music.Type
+							<a style="color: #b4d3db; text-decoration: none; " href="@Url.Action("MusicGenres", "MusicAlbums", new { type = @music.Type })">
+								<img src="~/Content/Images/Mic.png" alt="Contact Icon" class="icon" />
+								@music.Type
+								</a>
 						</span>
 					</div>
 					<div>
