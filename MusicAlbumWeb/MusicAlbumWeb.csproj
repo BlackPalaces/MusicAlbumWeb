@@ -307,6 +307,7 @@
     <Content Include="ScriptMusic\dropdown.js" />
     <Content Include="ScriptMusic\MyComment.js" />
     <Content Include="ScriptMusic\MyFavoriteMusic.js" />
+    <Content Include="ScriptMusic\SearchMusic.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="MyModel.edmx">

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.IO;
 using Microsoft.AspNet.Identity;
+using System.Data.Entity.SqlServer;
 
 namespace MusicAlbumWeb
 {
@@ -234,5 +235,21 @@ namespace MusicAlbumWeb
             }
             base.Dispose(disposing);
         }
+
+        [HttpGet]
+        public JsonResult Search(string query)
+        {
+            var results = db.MusicAlbum
+                .Where(m =>
+                    SqlFunctions.PatIndex("%" + query + "%", m.Musicname) > 0 ||
+                    SqlFunctions.PatIndex("%" + query + "%", m.Artist) > 0 ||
+                    SqlFunctions.PatIndex("%" + query + "%", m.Album) > 0
+                )
+                .Select(m => new { m.Id, m.Musicname, m.Artist, m.Album })
+                .ToList();
+
+            return Json(results, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
