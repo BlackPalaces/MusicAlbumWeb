@@ -212,6 +212,7 @@
       <DependentUpon>MyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\FavoriteMusicsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -258,6 +259,7 @@
     <Content Include="App_Data\Database1_log.ldf">
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\3dotsmenu.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -266,12 +268,14 @@
     <Content Include="Content\ChartStyleSheet.css" />
     <Content Include="Content\Images\Admin.png" />
     <Content Include="Content\Images\album.png" />
+    <Content Include="Content\Images\bindelete.png" />
     <Content Include="Content\Images\chart.png" />
     <Content Include="Content\Images\download %282%29 1.png" />
     <Content Include="Content\Images\favoriteF.png" />
     <Content Include="Content\Images\favoriteT.png" />
     <Content Include="Content\Images\Heart.png" />
     <Content Include="Content\Images\naruto.jpg" />
+    <Content Include="Content\Images\penedit.png" />
     <Content Include="Content\Images\plate.png" />
     <Content Include="Content\Images\singer.png" />
     <Content Include="Content\Images\user.png" />
@@ -300,6 +304,8 @@
       <DependentUpon>MyModel.edmx</DependentUpon>
       <LastGenOutput>MyModel.cs</LastGenOutput>
     </Content>
+    <Content Include="ScriptMusic\dropdown.js" />
+    <Content Include="ScriptMusic\MyComment.js" />
     <Content Include="ScriptMusic\MyFavoriteMusic.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -377,6 +383,11 @@
     <Content Include="Views\FavoriteMusics\Details.cshtml" />
     <Content Include="Views\FavoriteMusics\Edit.cshtml" />
     <Content Include="Views\FavoriteMusics\Index.cshtml" />
+    <Content Include="Views\Comments\Create.cshtml" />
+    <Content Include="Views\Comments\Delete.cshtml" />
+    <Content Include="Views\Comments\Details.cshtml" />
+    <Content Include="Views\Comments\Edit.cshtml" />
+    <Content Include="Views\Comments\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

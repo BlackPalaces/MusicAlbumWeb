@@ -1,0 +1,54 @@
+﻿/* Style the container div (dropdown) */
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.black-color {
+	color: #797777;
+}
+
+.white-color {
+	color: white;
+}
+
+/* Style the dots icon */
+.dots-icon {
+	font-size: 24px;
+	cursor: pointer;
+}
+
+/* Style the dropdown content (hidden by default) */
+.dropdown-content {
+	display: none;
+	border-radius: 5px;
+	position: absolute;
+	background-color: #394246;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+
+	/* Style the dropdown links */
+	.dropdown-content a {
+		color: aliceblue;
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+		border-radius:5px;
+	}
+
+		/* Change color on hover */
+		.dropdown-content a:hover {
+			background-color: #768388;
+		}
+
+/* Show the dropdown menu when hovering over the dots icon */
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+.icon {
+	width: 16px; /* ปรับขนาดของรูปตามต้องการ */
+	height: 16px;
+	margin-right: 5px; /* ระยะห่างระหว่าง icon กับข้อความ */
+}
