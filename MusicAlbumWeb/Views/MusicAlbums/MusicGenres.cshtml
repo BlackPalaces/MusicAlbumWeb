@@ -19,6 +19,16 @@
 		max-width: 100px;
 		height: auto;
 	}
+    .h2 {
+        padding-top: 10px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 2em;
+        margin-top: 20px;
+        font-style: italic;
+    }
 </style>
 
 <h2 style="padding-top:10px;">MusicGenres @(!string.IsNullOrEmpty(Request.QueryString["type"]) ? ": " +Request.QueryString["type"] : "")</h2>

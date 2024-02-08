@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MusicAlbumWeb.MusicAlbum>
+
+@{
+    ViewBag.Title = "AlbumList";
+}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Audio Player</title>
+    <link href="~/Content/CardStyles.css" rel="stylesheet" />
+    <script src="~/ScriptMusic/SearchMusic.js"></script>
+    <style>
+
+        .h2 {
+            padding-top: 10px;
+        }
+
+        h2 {
+            font-weight: bold;
+            font-size: 2em;
+            margin-top: 20px;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<h2 class="c">Album List</h2>
+<div class="container">
+    <div class="row">
+        @for (var i = 0; i < Model.Count(); i++)
+        {
+            var musicItem = Model.ElementAt(i);
+
+            <div class="col-md-4 mb-3 card-has-bg">
+                <div class="card mb-3 " style="margin-top:10px; min-height: 100px; background-image: url('@Url.Content("~/Content/images/" + musicItem.Musicpic)'); background-size: 70%; background-position: top; padding-top: 10px; width: 540px;">
+                    <div class="card-img-overlay">
+                        <a href="@Url.Action("MusicPlay", "MusicAlbums", new { id = @musicItem.Id })">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <img class="width-90 rounded-3" style="height: 100px; min-width: 150px; object-fit: cover; object-position: center;" src=@Url.Content("~/Content/images/" + musicItem.Musicpic) />
+                                </div>
+                                <div class="col-md-8" style="width:fit-content;">
+                                    <div class="overflow-hidden flex-nowrap" style="width:300px;">
+                                        <h3 class="mb-1">
+                                            <span class="text-reset text-with-shadow" style="color: aliceblue; font-size: 18px; white-space: nowrap; text-overflow: ellipsis;">@musicItem.Musicname</span>
+                                        </h3>
+                                        <span class="text-muted d-block mb-2 small" style="font-size: 15px; color: #b4d3db;">
+                                            @musicItem.Artist
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+    

@@ -21,6 +21,14 @@ namespace MusicAlbumWeb
         {
             return View(db.MusicAlbum.ToList());
         }
+        public ActionResult AlbumList(string NameAlbum)
+        {
+            var db = new Entities();
+            var MusicforAlbum = db.MusicAlbum.Where(m => m.Album == NameAlbum).ToList();
+
+            return View(MusicforAlbum);
+        }
+
 
         public ActionResult Chart()
         {
