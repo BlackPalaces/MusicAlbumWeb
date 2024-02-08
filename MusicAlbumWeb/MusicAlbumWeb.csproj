@@ -268,9 +268,11 @@
     <Content Include="Content\ChartStyleSheet.css" />
     <Content Include="Content\Images\Admin.png" />
     <Content Include="Content\Images\album.png" />
+    <Content Include="Content\Images\albumpicnomal.png" />
     <Content Include="Content\Images\bindelete.png" />
     <Content Include="Content\Images\chart.png" />
     <Content Include="Content\Images\download %282%29 1.png" />
+    <Content Include="Content\Images\dr.fuualbum.jfif" />
     <Content Include="Content\Images\favoriteF.png" />
     <Content Include="Content\Images\favoriteT.png" />
     <Content Include="Content\Images\Heart.png" />
