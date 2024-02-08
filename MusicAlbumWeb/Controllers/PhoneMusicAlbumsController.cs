@@ -14,7 +14,7 @@ namespace MusicAlbumWeb.Controllers
 {
     public class PhoneMusicAlbumsController : ApiController
     {
-        private MyPhoneModel db = new MyPhoneModel();
+        private Entities db = new Entities();
 
         // GET: api/PhoneMusicAlbums
         public IQueryable<MusicAlbum> GetMusicAlbum()

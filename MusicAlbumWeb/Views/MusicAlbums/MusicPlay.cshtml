@@ -97,8 +97,10 @@
 					</div>
 					<div>
 						<span class="text-muted d-block mb-2 small" style="font-size: 20px; color: #b4d3db;">
-							<img src="~/Content/Images/Music.png" alt="Contact Icon" class="icon" />
-							@music.Album
+							<a style="color: #b4d3db; text-decoration: none; " href="@Url.Action("AlbumList", "MusicAlbums", new { NameAlbum = @music.Album })">
+								<img src="~/Content/Images/Music.png" alt="Contact Icon" class="icon" />
+								@music.Album
+							</a>
 						</span>
 					</div>
 					<div style="margin-top:0px;">
