@@ -173,32 +173,30 @@ ViewBag.Title = "Albams";
             var musicItem = Model.ElementAt(i);
 
             <div class="col-sm-12 col-md-6 col-lg-3  margin-top">
-                    <div class=" d-flex flex-column">
-                        <a href="@Url.Action("AlbumList", "MusicAlbums", new { NameAlbum = @musicItem.Albumname })">
-                            <div class="row align-items-center">
-                                <div class="col-md-4">
-                                    <img class="width-90 rounded-3 card text-dark card-has-bg click-col" style="height: 250px; min-width: 250px; object-fit: cover; object-position: center;"
-                                         src=@Url.Content("~/Content/images/" + musicItem.AlbumPic) />
-                                </div>
-                                <div class="col-md-8" style="width: fit-content; height:40px">
-                                    <div class="overflow-hidden">
-                                        <h3 class="mb-1">
-                                            <span class="text-with-shadow1 ">@musicItem.Albumname</span>
-                                        </h3>
+                <div class=" d-flex flex-column">
+                    <a href="@Url.Action("AlbumList", "MusicAlbums", new { NameAlbum = @musicItem.Albumname })">
+                        <div class="row align-items-center">
+                            <div class="col-md-4">
+                                <img class="width-90 rounded-3 card text-dark card-has-bg click-col" style="height: 250px; min-width: 250px; object-fit: cover; object-position: center;"
+                                     src=@Url.Content("~/Content/images/" + musicItem.AlbumPic) />
+                            </div>
+                            <div class="col-md-8" style="width: fit-content; height:40px">
+                                <div class="overflow-hidden">
+                                    <h3 class="mb-1">
+                                        <span class="text-with-shadow1 ">@musicItem.Albumname</span>
+                                    </h3>
 
-                                    </div>
                                 </div>
                             </div>
-                        </a>
-                    </div>
-                
+                        </div>
+                    </a>
+                </div>
+
             </div>
 
-            
+
         }
     </div>
-            
-        </div>
-    </div>
-    
+
 </body>
+</html>

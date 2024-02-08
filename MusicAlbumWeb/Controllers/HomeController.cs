@@ -20,8 +20,14 @@ namespace MusicAlbumWeb.Controllers
         public ActionResult Albams()
         {
             var AlbumList = db.Album.ToList();
-            
+
             return View(AlbumList);
+        }
+        public ActionResult Artist()
+        {
+            var ArtistList = db.Artist.ToList();
+
+            return View(ArtistList);
         }
         public ActionResult Index()
         {
@@ -35,11 +41,6 @@ namespace MusicAlbumWeb.Controllers
             return View();
         }
 
-        public ActionResult Artist()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+        
     }
 }
