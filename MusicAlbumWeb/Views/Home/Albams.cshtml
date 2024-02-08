@@ -13,7 +13,6 @@ ViewBag.Title = "Albams";
     <script src="~/ScriptMusic/SearchMusic.js"></script>
     <style>
 
-
         .containersearch {
             text-align: center;
         }
@@ -23,6 +22,51 @@ ViewBag.Title = "Albams";
             max-width: 600px;
             margin: 20px auto;
         }
+
+        #autocomplete-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+        }
+
+        .autocomplete-results {
+            display: none;
+            position: absolute;
+            width: 100%;
+            background-color: #485357;
+            border: 1px solid #ddd;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1000; /* ปรับค่า z-index ตามต้องการ */
+            border-radius: 5px;
+        }
+
+
+        .autocomplete-results-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+            .autocomplete-results-list li {
+                padding: 5px;
+                border-bottom: 1px solid #ccc;
+                cursor: pointer;
+            }
+
+                .autocomplete-results-list li:hover {
+                    background-color: #394246;
+                }
+
+            .autocomplete-results-list a {
+                color: #b4d3db; /* เปลี่ยนสีตัวหนังสือตามที่คุณต้องการ */
+                text-decoration: none; /* ลบ underline ของลิงก์ */
+            }
+
+                .autocomplete-results-list a:hover {
+                    color: black; /* เปลี่ยนสีตัวหนังสือเมื่อโฮเวอร์ลิงก์ */
+                }
 
 
         #search-input {
@@ -52,7 +96,7 @@ ViewBag.Title = "Albams";
                 .search-results-list li:last-child {
                     border-bottom: none;
                 }
-        
+
 
         h2 {
             font-weight: bold;
@@ -81,7 +125,7 @@ ViewBag.Title = "Albams";
         }
 
         h2.b {
-            text-shadow: 0 0 0.2em #83dc4e, 0 0 0.2em #F87
+            text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87
         }
 
         .shadow1 {
@@ -110,12 +154,6 @@ ViewBag.Title = "Albams";
 
         .decnone {
             text-decoration: none;
-        }
-
-        .container {
-            height: 300px; /* Set the desired height */
-            overflow-y: auto; /* Enable vertical scrollbar when content exceeds the height */
-            margin-top: 20px; /* Adjust as needed */
         }
     </style>
 </head>

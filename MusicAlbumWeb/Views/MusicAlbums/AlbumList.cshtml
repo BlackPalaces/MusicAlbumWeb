@@ -11,147 +11,15 @@
     <script src="~/ScriptMusic/SearchMusic.js"></script>
     <style>
 
-        .containersearch {
-            text-align: center;
+        .h2 {
+            padding-top: 10px;
         }
-
-        #search-bar {
-            position: relative;
-            max-width: 600px;
-            margin: 20px auto;
-        }
-
-        #autocomplete-results {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-        }
-
-        .autocomplete-results {
-            display: none;
-            position: absolute;
-            width: 100%;
-            background-color: #485357;
-            border: 1px solid #ddd;
-            max-height: 200px;
-            overflow-y: auto;
-            z-index: 1000; /* ปรับค่า z-index ตามต้องการ */
-            border-radius: 5px;
-        }
-
-
-        .autocomplete-results-list {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-            .autocomplete-results-list li {
-                padding: 5px;
-                border-bottom: 1px solid #ccc;
-                cursor: pointer;
-            }
-
-                .autocomplete-results-list li:hover {
-                    background-color: #394246;
-                }
-
-            .autocomplete-results-list a {
-                color: #b4d3db; /* เปลี่ยนสีตัวหนังสือตามที่คุณต้องการ */
-                text-decoration: none; /* ลบ underline ของลิงก์ */
-            }
-
-                .autocomplete-results-list a:hover {
-                    color: black; /* เปลี่ยนสีตัวหนังสือเมื่อโฮเวอร์ลิงก์ */
-                }
-
-
-        #search-input {
-            border-radius: 5px;
-            background-color: #394246;
-            width: 100%;
-            padding: 8px;
-        }
-
-        .search-results {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .search-results-list {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-            .search-results-list li {
-                padding: 5px;
-                border-bottom: 1px solid #ccc;
-            }
-
-                .search-results-list li:last-child {
-                    border-bottom: none;
-                }
-
 
         h2 {
             font-weight: bold;
             font-size: 2em;
             margin-top: 20px;
             font-style: italic;
-        }
-
-        img {
-            margin-right: 30px;
-        }
-
-        .thumbnail {
-            background-color: transparent;
-            width: fit-content;
-            border: none;
-        }
-
-        .container {
-            height: fit-content;
-            margin-left: 0px;
-        }
-
-        h2.a {
-            text-shadow: 0 0 0.2em #87F, 0 0 0.2em #87F, 0 0 0.2em #87F;
-        }
-
-        h2.b {
-            text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87
-        }
-
-        .shadow1 {
-            text-shadow: 0 0 0.2em #3f4f78, 0 0 0.2em #3f4f78
-        }
-
-        h2.c {
-            text-shadow: 0 0 0.2em #ae9e29, 0 0 0.2em #ae9e29;
-        }
-
-        .margin-top {
-            margin-top: 20px;
-        }
-
-        .card2 {
-            box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
-        }
-
-        .width-90 {
-            width: 90px !important;
-        }
-
-        .rounded-3 {
-            border-radius: 0.5rem !important;
-        }
-
-        .decnone {
-            text-decoration: none;
         }
     </style>
 </head>
