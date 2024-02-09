@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<MusicAlbumWeb.MusicAlbum>
+@model IEnumerable<MusicAlbumWeb.Artist>
 
     ViewBag.Title = "Artist";
     }
@@ -10,45 +10,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouTube Audio Player</title>
     <link href="~/Content/CardStyles.css" rel="stylesheet" />
+    <script src="~/ScriptMusic/SearchMusic.js"></script>
     <style>
 
+        .containersearch {
+            text-align: center;
+        }
 
         #search-bar {
-            margin: 20px;
-            display: flex;
-            align-items: center;
+            position: relative;
+            max-width: 600px;
+            margin: 20px auto;
         }
+
+        #autocomplete-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+        }
+
+        .autocomplete-results {
+            display: none;
+            position: absolute;
+            width: 100%;
+            background-color: #485357;
+            border: 1px solid #ddd;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1000; /* ปรับค่า z-index ตามต้องการ */
+            border-radius: 5px;
+        }
+
+
+        .autocomplete-results-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+            .autocomplete-results-list li {
+                padding: 5px;
+                border-bottom: 1px solid #ccc;
+                cursor: pointer;
+            }
+
+                .autocomplete-results-list li:hover {
+                    background-color: #394246;
+                }
+
+            .autocomplete-results-list a {
+                color: #b4d3db; /* เปลี่ยนสีตัวหนังสือตามที่คุณต้องการ */
+                text-decoration: none; /* ลบ underline ของลิงก์ */
+            }
+
+                .autocomplete-results-list a:hover {
+                    color: black; /* เปลี่ยนสีตัวหนังสือเมื่อโฮเวอร์ลิงก์ */
+                }
+
 
         #search-input {
-            padding: 10px;
-            width: 300px;
-            font-size: 1em;
-            color: #333; /* Text color in the input field */
-            background-color: #f2f2f2; /* Light gray background */
-            border: 2px solid #666; /* Dark gray border */
-            border-radius: 5px; /* Rounded corners */
-            margin-right: 10px; /* Spacing between input and button */
-            outline: none; /* Remove default input focus outline */
-        }
-
-            #search-input:focus {
-                border-color: #999; /* Darker border color on focus */
-            }
-
-        #search-button {
-            padding: 10px;
-            font-size: 1em;
-            color: #FFFFFF;
-            background-color: #666; /* Dark gray background */
-            border: none;
             border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease; /* Smooth transition on hover */
+            background-color: #394246;
+            width: 100%;
+            padding: 8px;
         }
 
-            #search-button:hover {
-                background-color: #444; /* Darker gray on hover */
+        .search-results {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .search-results-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+            .search-results-list li {
+                padding: 5px;
+                border-bottom: 1px solid #ccc;
             }
+
+                .search-results-list li:last-child {
+                    border-bottom: none;
+                }
+
 
         h2 {
             font-weight: bold;
@@ -77,7 +125,7 @@
         }
 
         h2.b {
-            text-shadow: 0 0 0.2em #ae9e29, 0 0 0.2em #F87
+            text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87
         }
 
         .shadow1 {
@@ -107,81 +155,50 @@
         .decnone {
             text-decoration: none;
         }
-
-        .container {
-            height: 300px; /* Set the desired height */
-            overflow-y: auto; /* Enable vertical scrollbar when content exceeds the height */
-            margin-top: 20px; /* Adjust as needed */
-        }
     </style>
 
 </head>
 <body>
 
-    <div id="search-bar">
-        <input type="text" id="search-input" placeholder="Search...">
-        <button id="search-button">Search</button>
+    <div class="containersearch">
+        <div id="search-bar">
+            <input style="width: 600px; max-width:600px;" type="text" id="search-input" placeholder="Search Music,Artist,Album..." oninput="showResults()">
+            <div id="autocomplete-results" class="autocomplete-results"></div>
+        </div>
     </div>
 
     <h2 class="b">Artists</h2>
 
+    <div class="row">
+        @for (var i = 0; i < Model.Count(); i++)
+        {
+            var musicItem = Model.ElementAt(i);
 
-    <h2 class="b">Artist</h2>
-    <div class="image-grid">
-        <!-- Row 1 -->
-        <div class="image-row">
-            <!-- Image 1 with caption -->
-            <figure class="image-container">
-                <a href="https://www.youtube.com/results?search_query=post+malone" target="_blank">
-                    <img src="~/image/PostMalone.png" alt="Post Malone">
-                    <figcaption>Post Malone</figcaption>
-            </figure>
-
-            <!-- Image 2 with caption -->
-            <figure class="image-container">
-                <a href="https://www.youtube.com/watch?v=kTJczUoc26U" target="_blank">
-                    <img src="~/image/justinB.png" alt="Justin Bieber">
-                    <figcaption>Justin Bieber</figcaption>
-            </figure>
-
-            <!-- Image 3 with caption -->
-            <figure class="image-container">
-                <a href="https://www.youtube.com/watch?v=JGwWNGJdvx8" target="_blank">
-                    <img src="~/image/Ed.png" alt="Ed Sheeran">
-                    <figcaption>Ed Sheeran</figcaption>
-            </figure>
-
-            <!-- Image 4 with caption -->
-            <figure class="image-container">
-                <a href="https://www.youtube.com/watch?v=_CL6n0FJZpk" target="_blank">
-                    <img src="~/image/snoop.png" alt="Snoop Dogg">
-                    <figcaption>Snoop Dogg</figcaption>
-            </figure>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            @for (var i = 0; i < Model.Count(); i++)
-            {
-                var musicItem = Model.ElementAt(i);
-
-                <div class="col-md-12">
-
-                    <a href="https://www.youtube.com/" target="_blank" style="text-decoration: none; color: inherit;">
+            <div class="col-sm-12 col-md-6 col-lg-3  margin-top">
+                <div class=" d-flex flex-column">
+                    <a href="@Url.Action("ArtistList", "MusicAlbums", new { NameArtist = @musicItem.Artistname })">
                         <div class="row align-items-center">
                             <div class="col-md-4">
+                                <img class="width-90 rounded-3 card text-dark card-has-bg click-col" style="height: 250px; min-width: 250px; object-fit: cover; object-position: center;"
+                                     src=@Url.Content("~/Content/images/" + musicItem.ArtistPic) />
                             </div>
-                            <div class="col-md-8">
-                                <div class="overflow-hidden flex-nowrap">
-                                    <span class="text-muted d-block mb-2 small" style="font-size:20px;">
-                                        @musicItem.Artist
-                                    </span>
+                            <div class="col-md-8" style="width: fit-content; height:40px">
+                                <div class="overflow-hidden">
+                                    <h3 class="mb-1">
+                                        <span class="text-with-shadow1 ">@musicItem.Artistname</span>
+                                    </h3>
+
                                 </div>
                             </div>
                         </div>
                     </a>
-
                 </div>
-            }
-        </div>
+
+            </div>
+
+
+        }
     </div>
+
+</body>
+</html>
