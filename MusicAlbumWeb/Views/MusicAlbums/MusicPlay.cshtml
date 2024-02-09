@@ -83,9 +83,12 @@
 				<div>
 					<div>
 						<span class="text-muted d-block mb-2 small" style="font-size: 20px; color: #b4d3db;">
-							<img src="~/Content/Images/singer.png" alt="Contact Icon" class="icon" />
-							@music.Artist
-						</span>
+							
+								<a style="color: #b4d3db; text-decoration: none; " href="@Url.Action("ArtistList", "MusicAlbums", new { NameArtist = @music.Artist})">
+									<img src="~/Content/Images/singer.png" alt="Contact Icon" class="icon" />
+									@music.Artist
+								</a>
+</span>
 					</div>
 					<div>
 						<span class="text-muted d-block mb-2 small" style="font-size: 20px; color: #b4d3db;">
